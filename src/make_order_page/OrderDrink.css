@@ -1,0 +1,31 @@
+
+
+.oddrinks{
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+    overflow-y: auto;
+    white-space: nowrap;
+}
+
+
+.oddrinks div{
+    display: inline-block;
+    margin-right: 10px;
+}
+.odimg{
+    width: 75px;
+    height: 150px;
+} 
+
+.big{
+  width:100px; 
+  height: 200px;
+  animation-name: big;
+  animation-duration: 1s;
+}
+
+@keyframes big {
+    from {width:75px; height: 150px;}
+    to {width:100px; height: 200px;}
+  }

@@ -1,0 +1,122 @@
+
+
+.nav-bar{
+    height: 140px;
+    width:100%;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo{
+    display: inline-block;
+    width: 270px;
+    height: 140px;
+    background-size: cover;
+    background-position: center center;
+    background-image: url(images/logo.png);
+}
+
+.links{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.links a{
+    color: white;
+    margin-right: 50px;
+    font-weight: 700;
+    font-size: 28px;
+    text-decoration: none;
+}
+
+.phone a{
+    color:white;
+    font-weight: 700;
+    font-size: 24px;
+    text-decoration: none;
+    position: relative;
+    top:20px;
+}
+
+.mbutton{
+    display: none;
+}
+
+
+@media screen and (max-width: 1200px) {
+    .nav-bar{
+        height: 120px;
+    }
+    .logo{
+        width: 220px;
+        height: 110px;
+    }
+    .links a{
+        font-size: 24px;
+    }
+    .phone a{
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .nav-bar{
+        height: 110px;
+    }
+    .logo{
+        width: 200px;
+        height: 100px;
+    }
+    .links a{
+        font-size: 22px;
+    }
+    .phone a{
+        font-size: 18px;
+    }
+} 
+
+@media screen and (max-width: 768px) {
+    .nav-bar{
+        height: 95px;
+    }
+    .logo{
+        width: 175px;
+        height: 85px;
+    }
+    .links a{
+        font-size: 20px;
+    }
+    .phone a{
+        font-size: 16px;
+    }
+} 
+
+@media screen and (max-width: 750px) {
+    .nav-bar{
+        position: relative;
+        height: 110px;
+        justify-content: center; 
+    }
+    .links{
+        display: none;
+    }
+    .logo{
+        width: 200px;
+        height: 100px;
+    }
+    .phone{
+        position: absolute;
+        top:0;
+        left:10px;
+    }
+    .mbutton{
+        display: block;
+        color: white;
+        font-size: 42px;
+        position: absolute;
+        right:10px;
+    }
+} 

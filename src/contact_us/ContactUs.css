@@ -1,0 +1,102 @@
+
+
+.cucontent{
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    background-color: white;
+    opacity: 0.9;
+}
+
+.cucontent .row{
+    margin: 20px 0;
+}
+
+.cucontent h1{
+    color: #F26522;
+    font-weight: 700;
+    margin: 0 auto;
+    padding-top: 10px;
+}
+
+.cucontent input, .cucontent textarea{
+    display: block;
+    width: 80%;
+    font-size: 14px;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    padding: 5px;
+}
+
+.cucontent .culine{
+    width:80%;
+    height: 1px;
+    background-color: black;
+    margin: 10px auto;
+}
+
+.cucontent button{
+    background-color: #F26522;
+    color: white;
+    border: 0;
+    padding: 5px 40px;
+    margin-bottom: 10px;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.cucontacts{
+    display:inline-block;
+    margin-bottom: 10px;
+    font-weight: 700;
+    text-align: left;   
+}
+
+.cucontacts a, .cucontacts a:hover{
+    text-decoration: none;
+    color: black;
+}
+
+
+.cucontacts text{
+    margin-left: 5px;
+}
+
+
+@media screen and (min-width: 768px) {
+    .cucontent .culine{
+        width:1px;
+        height: 80%;
+        
+    }
+
+    .cucontacts{ 
+        width: 100%;
+        font-size:18px;
+        position: absolute;
+        top:40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .cucontent button{
+        margin-bottom: 20px;
+    }
+
+}
+
+@media screen and (min-width: 1200px) {
+
+    .cucontacts{ 
+        font-size:24px;
+    }
+
+    .cucontent input, .cucontent textarea{
+        font-size: 18px;
+    }
+
+    .cucontent button{
+        font-size: 42px;
+    }
+
+}

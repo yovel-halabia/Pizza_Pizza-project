@@ -1,0 +1,37 @@
+
+.dr{
+    padding: 10px 0;
+    margin-bottom: 10px;
+    background-color: white;
+}
+
+.drbtn , .drbtn:hover{
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.drme{
+    width:100%;
+    text-align: center;
+    border:0;
+    will-change: transform !important;
+    position: absolute !important;
+    transform: translate3d(0px, 38px, 0px) !important;
+    top: 0px !important;
+    left: 0px !important;
+}
+
+.dropdown-menu hr{
+    width: 80%;
+    margin: 8px auto;
+}
+
+.dropdown .drop-icon{
+    transform: rotate(180deg);
+}
+
+
+.dropdown.show .drop-icon{
+    transform: rotate(0deg);
+}
