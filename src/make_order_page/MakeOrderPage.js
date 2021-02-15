@@ -54,14 +54,14 @@ function MakeOrder(props){
 
 
     function handleCancel(){
-        history.push("/menu");
+        window.location.replace("/menu#checkout");
     }
 
 
 
     return(
         <div className="mo mecontent">
-            <text className="moreturn" onClick={handleCancel}>back to menu <FontAwesomeIcon icon={faCaretDown} style={{ transform: "rotate(-90deg)"}}/></text>
+            <a  className="moreturn" onClick={handleCancel}>back to menu <FontAwesomeIcon icon={faCaretDown} style={{ transform: "rotate(-90deg)"}}/></a>
             <div className="mocontent">
                 {checkOrder()} 
             </div>

@@ -67,7 +67,7 @@ const items = [
         name:"CHICKEN SALAD",
         cost:"40",
         type:"salad",
-        extras:["without tomatos", "without onion", "without pepper"],
+        extras:["without lemon juice", "without celery", "without green onion","without pickels","Purple cabbage"],
         image:"../images/menu_pic/salad_sec/chicken.jpg",
         width:"120px",
         height:"100px"
@@ -77,7 +77,7 @@ const items = [
         name:"LAMB'S LETTUCE SALAD",
         type:"salad",
         cost:"35",
-        extras:["without tomatos", "without onion", "without pepper"],
+        extras:["without lemon juice", "without feta", "without olive oil","without muscat vinegar"],
         image:"../images/menu_pic/salad_sec/lambs_lettuce.jpg",
         width:"120px",
         height:"100px"
@@ -182,7 +182,7 @@ const extras=[
         image:"../images/extras/basil.png"
     },
     {
-        name:"black oilve",
+        name:"black olive",
         image:"../images/extras/black_olive.png"
     },
     {
@@ -195,7 +195,8 @@ const extras=[
     },
     {
         name:"chili",
-        image:"../images/extras/chili.png"  
+        image:"../images/extras/chili.png",
+        width:"40px",
     },
     {
         name:"egg",
@@ -224,7 +225,8 @@ const extras=[
     
     {
         name:"tomato",
-        image:"../images/extras/tomato.png"  
+        image:"../images/extras/tomato.png",
+        height:"20px"  
     },
     {
         name:"tuna",

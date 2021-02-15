@@ -19,6 +19,11 @@
 .moreturn{
     position: absolute;
     text-decoration: underline;
+    color: black;
     font-size:12px;
     right:5px;
+}
+
+.moreturn:hover{
+    color:black;
 }

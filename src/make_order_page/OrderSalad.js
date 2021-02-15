@@ -10,16 +10,16 @@ function OrderSalad(props){
         }else{
             setExtras(prev => [...prev, extra]);
         }
-
     }
 
     function handleClick(item){
+        let orderExtra;
         if(extras.length === 0){
-            const allItem = "with all"
-            setExtras(prev => [...prev, allItem]);
+            orderExtra = ["with all"]
+        }else{
+            orderExtra = extras;
         }
-
-        const orderItem={name:item.name, cost:item.cost , extras:extras};
+        const orderItem={name:item.name, cost:item.cost , extras:orderExtra};
         props.onChange(orderItem , props.id);
     }
 

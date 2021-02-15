@@ -39,3 +39,17 @@
     left:50%;
     transform: translate(-50%, -30%);
 }
+
+.cbcancel{
+    grid-row: 3;
+    grid-column:1/4;
+    background-color: white;
+    padding: 5px;
+}
+
+.cbcancel a{
+    color:black;
+    font-size:18px;
+    font-weight: 700;
+    text-decoration: none;
+}

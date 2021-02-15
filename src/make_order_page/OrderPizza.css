@@ -118,7 +118,13 @@
     margin-right: 10px;
 }
 
-.opbtn{
+.opalerts{
     grid-row: 4;
+    grid-column: 1/4; 
+    margin: 5px 0;
+}
+
+.opbtn{
+    grid-row: 5;
     grid-column: 1/3;
 }

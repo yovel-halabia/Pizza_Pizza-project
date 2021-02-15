@@ -131,7 +131,6 @@ function OrderDeal(props){
     }
 
     function goNext(orderItem, id){
-        console.log(orderItem);
         let array = ["hidden","hidden","hidden","hidden"];
         array[id+1]="";
         setOrderPosition(array);

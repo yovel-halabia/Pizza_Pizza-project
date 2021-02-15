@@ -38,6 +38,9 @@ export default function ChooseBox(props){
     }
 
     function handleClick(name){
+        if(name==="cancel"){
+            props.handleChoose(name);
+        }
         if(name === "quarter"){
             props.handleChoose(name,[props.extraPosition]);
         }else if(name === "full"){
@@ -74,6 +77,7 @@ export default function ChooseBox(props){
                 <br/>
                 <text>full</text>
             </div>
+            <div className="cbcancel" onClick={()=>handleClick("cancel")}><a href="#">cancel</a></div>
         </div>
         
     )

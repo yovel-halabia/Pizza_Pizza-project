@@ -16,7 +16,8 @@ function MenuPage(props){
     
     const cookies = new Cookies();
 
-    console.log(cookies.get('orderItems'))
+    console.log(cookies.get('orderItems'));
+    
 
     
     
