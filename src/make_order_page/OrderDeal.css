@@ -1,0 +1,15 @@
+.odprogressbar{
+    width: 80%;
+    height:30px;
+    margin: 5px auto;
+    border-radius:20px;
+   border: 1px solid black;
+   display:grid;
+   grid-template-columns: auto;
+   padding: 0 10px;
+}
+
+.odsection{
+    display: inline-block;
+    grid-row:1;
+}
