@@ -13,19 +13,19 @@ function OrderDeal(props){
     switch(props.item.id){
         case 3:
              //2 FAMILY TRAY L + DRINK
-            array= [{display: '',name:items[1].name},{display: 'hidden',name:items[1].name},{display: 'hidden',name:"DRINK"}];
+            array= [{display: '',name:items[1].name,done:false},{display: 'hidden',name:items[1].name,done:false},{display: 'hidden',name:"DRINK",done:false}];
             break;
         case 4:
             //3 FAMILY TRAY L + DRINK
-            array= [{display: '',name:items[1].name},{display: 'hidden',name:items[1].name},{display: 'hidden',name:items[1].name},{display: 'hidden',name:"DRINK"}];
+            array= [{display: '',name:items[1].name,done:false},{display: 'hidden',name:items[1].name,done:false},{display: 'hidden',name:items[1].name,done:false},{display: 'hidden',name:"DRINK",done:false}];
             break;
         case 5:
             //3 FAMILY TRAY XL + DRINK
-            array= [{display: '',name:items[2].name},{display: 'hidden',name:items[2].name},{display: 'hidden',name:items[2].name},{display: 'hidden',name:"DRINK"}];
+            array= [{display: '',name:items[2].name,done:false},{display: 'hidden',name:items[2].name,done:false},{display: 'hidden',name:items[2].name,done:false},{display: 'hidden',name:"DRINK",done:false}];
             break;
         case 6:
             //FAMILY TRAY XL + SALAD + DRINK
-            array= [{display: '',name:items[2].name},{display: 'hidden',name:"choose salad"},{display: 'hidden',name:"SALAD"},{display: 'hidden',name:"DRINK"}];
+            array= [{display: '',name:items[2].name,done:false},{display: 'hidden',name:"choose salad",done:false},{display: 'hidden',name:"SALAD"},{display: 'hidden',name:"DRINK",done:false}];
             break;
     }
     const [orderPosition,setOrderPosition] = React.useState(array);
@@ -154,7 +154,7 @@ function OrderDeal(props){
         setOrderPosition((prev)=>{
             return prev.map((item,index)=>{
                 if(index === id){
-                    return {...item,display:"hidden"}
+                    return {...item,display:"hidden",done:true}
                 }else if(index === (id+1)){
                     return {...item,display:""}
                 }else{
@@ -177,23 +177,42 @@ function OrderDeal(props){
         
     }
 
-    function renderSection(item){
+    function renderSection(item,index){
         if(item.name != "choose salad"){
-            return <div onClick={()=>navInSections(item)} className="odsection">{item.name}</div>
+            return (
+            <div onClick={()=>navInSections(index)} className="odsection">
+            <text className={item.done&&"odwhite"}>{item.name}</text>
+            <div className={item.done?"odbox odboxwhite":"odbox odboxblack"}></div>
+            <div className={item.done&&"oddone"}></div>
+            </div>
+            )
         }
     }
 
-    function navInSections(item){
-     //need to add id to the object then you can compare 
-     // between ids and make "" what u want to show 
+    function navInSections(index){
+        setOrderPosition((prev)=>{
+            return prev.map((prevItem,prevIndex)=>{
+                if(prevItem.display === ""&& index != prevIndex){
+                    return {...prevItem , display: "hidden"}
+                }else if(prevIndex === index){
+                    return {...prevItem , display: "",done:false};
+                }else if(prevIndex > index){
+                    return {...prevItem,done:false};
+                }else{
+                    return prevItem;
+                }
+            });
+        })
+
+
     }
 
 
     return (
         <div >
             <div className="odprogressbar">
-                {orderPosition.map((item)=>{
-                    return renderSection(item);  
+                {orderPosition.map((item,index)=>{
+                    return renderSection(item,index);  
                 }
                 )}
             </div>
