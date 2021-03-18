@@ -1,5 +1,6 @@
 import React from 'react';
 import "./OrderDeal.css";
+import Cookies from 'universal-cookie';
 import {items} from '../data';
 import OrderPizza from './OrderPizza';
 import OrderDrink from './OrderDrink';
@@ -8,7 +9,7 @@ import OrderSalad from './OrderSalad';
 
 function OrderDeal(props){
     const [chosenSaladItem, setChosenSaladItem] = React.useState(items[7]);
-    const [orderDealItem , setOrderDealItem] = React.useState([]);
+    const [orderDealItem , setOrderDealItem] = React.useState({id:props.item.id,deal:true,type:"deal",name:props.item.name,cost:props.item.cost, extras:[]});
     let array = [];
     switch(props.item.id){
         case 3:
@@ -25,10 +26,13 @@ function OrderDeal(props){
             break;
         case 6:
             //FAMILY TRAY XL + SALAD + DRINK
-            array= [{display: '',name:items[2].name,done:false},{display: 'hidden',name:"choose salad",done:false},{display: 'hidden',name:"SALAD"},{display: 'hidden',name:"DRINK",done:false}];
+            array= [{display: '',name:items[2].name,done:false},{display: 'hidden',name:"SALAD",done:false},{display: 'hidden',name:"choose salad"},{display: 'hidden',name:"DRINK",done:false}];
             break;
     }
     const [orderPosition,setOrderPosition] = React.useState(array);
+
+    const cookies = new Cookies();
+    const item = cookies.get('item');
     
 
     
@@ -45,19 +49,20 @@ function OrderDeal(props){
                         <OrderPizza
                             id={0}
                             className={orderPosition[0].display}
-                            item={items[1]}
+                            item={item.extras?item.extras[0]:items[1]}
                             onChange={goNext}
                         />
                         <OrderPizza
                             id={1}
                             className={orderPosition[1].display}
-                            item={items[1]}
+                            item={item.extras?item.extras[1]:items[1]}
                             onChange={goNext}
                         />
                         <OrderDrink
                             id={2}
                             className={orderPosition[2].display}
                             onChange={finishOrder}
+                            item={item.extras&&item.extras[2]}
                         />
                     </div>
                     
@@ -69,25 +74,26 @@ function OrderDeal(props){
                         <OrderPizza
                             id={0}
                             className={orderPosition[0].display}
-                            item={items[1]}
+                            item={item.extras?item.extras[0]:items[1]}
                             onChange={goNext}
                         />
                         <OrderPizza
                             id={1}
                             className={orderPosition[1].display}
-                            item={items[1]}
+                            item={item.extras?item.extras[1]:items[1]}
                             onChange={goNext}
                         />
                         <OrderPizza
                             id={2}
                             className={orderPosition[2].display}
-                            item={items[1]}
+                            item={item.extras?item.extras[2]:items[1]}
                             onChange={goNext}
                         />
                         <OrderDrink
                             id={3}
                             className={orderPosition[3].display}
                             onChange={finishOrder}
+                            item={item.extras&&item.extras[3]}
                         />
                     </div>
                     );
@@ -98,19 +104,26 @@ function OrderDeal(props){
                         <OrderPizza
                             id={0}
                             className={orderPosition[0].display}
-                            item={items[2]}
+                            item={item.extras?item.extras[0]:items[1]}
                             onChange={goNext}
                         />
                         <OrderPizza
                             id={1}
                             className={orderPosition[1].display}
-                            item={items[2]}
+                            item={item.extras?item.extras[1]:items[1]}
+                            onChange={goNext}
+                        />
+                        <OrderPizza
+                            id={2}
+                            className={orderPosition[2].display}
+                            item={item.extras?item.extras[2]:items[1]}
                             onChange={goNext}
                         />
                         <OrderDrink
-                            id={2} 
-                            className={orderPosition[2].display}
+                            id={3} 
+                            className={orderPosition[3].display}
                             onChange={finishOrder}
+                            item={item.extras&&item.extras[3]}
                         />
                     </div>
                     );
@@ -121,7 +134,7 @@ function OrderDeal(props){
                         <OrderPizza
                         id={0}
                         className={orderPosition[0].display}
-                        item={items[2]}
+                        item={item.extras?item.extras[0]:items[1]}
                         onChange={goNext}
                         />
                         <ChooseSalad
@@ -133,6 +146,7 @@ function OrderDeal(props){
                         <OrderSalad 
                             id={2}
                             item={chosenSaladItem}
+                            editItem={item.extras&&item.extras[1]}
                             className={orderPosition[2].display}
                             onChange={goNext}
                         />
@@ -140,6 +154,7 @@ function OrderDeal(props){
                         id={3} 
                         className={orderPosition[3].display}
                         onChange={finishOrder}
+                        item={item.extras&&item.extras[3]}
                         />
                     </div>
                 );
@@ -164,9 +179,18 @@ function OrderDeal(props){
         });
 
         if(orderItem){
-            let arrayDeal = orderDealItem;
-            arrayDeal.push(orderItem);
-            setOrderDealItem(arrayDeal);
+            console.log(orderItem);
+            let arrayDeal = orderDealItem.extras;
+            if(orderDealItem.extras[id]){
+                arrayDeal = arrayDeal.map((item,index)=>{if(index===id){return orderItem}else{return item}});
+            }else if(orderItem.type === "salad"&&orderDealItem.extras[id-1]){
+
+                arrayDeal = arrayDeal.map((item,index)=>{if(index===id-1){return orderItem}else{return item}});
+                
+            }else{
+               arrayDeal.push(orderItem); 
+            }
+            setOrderDealItem(prev=>{return{...prev,extras:arrayDeal}});
         }
         
     }
@@ -190,6 +214,8 @@ function OrderDeal(props){
     }
 
     function navInSections(index){
+
+
         setOrderPosition((prev)=>{
             return prev.map((prevItem,prevIndex)=>{
                 if(prevItem.display === ""&& index != prevIndex){

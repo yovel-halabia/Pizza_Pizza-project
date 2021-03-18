@@ -29,3 +29,8 @@
     from {width:75px; height: 150px;}
     to {width:100px; height: 200px;}
   }
+
+
+.odalert{
+    margin: 10px 0;
+}

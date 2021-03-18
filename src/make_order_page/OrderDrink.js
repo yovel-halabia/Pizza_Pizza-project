@@ -2,12 +2,21 @@ import React from 'react';
 import ScrollContainer from 'react-indiana-drag-scroll'
 import './OrderDrink.css';
 import {items} from '../data.js';
+import Alert from '@material-ui/lab/Alert';
+import Collapse from '@material-ui/core/Collapse';
 
 
 function OrderDrink(props){
+    let prevChoose = {name:"",position:""};
+    let array = ["" ,"" ,"","","",""];
+    if(props.item){
+        prevChoose = {name:props.item.extras[0],position:props.item.position};
+        array[props.item.position]="big";
+    }
 
-    const [choose , setChoose] = React.useState();
-    const [bigClass , setBigClass] = React.useState(["" ,"" ,"","","",""]);
+    const [choose , setChoose] = React.useState(prevChoose);
+    const [bigClass , setBigClass] = React.useState(array);
+    const [alertMessage, setAlertMessage] = React.useState(false);
 
     function createItem(item , index){
         return(
@@ -21,30 +30,39 @@ function OrderDrink(props){
         let array = ["" ,"" ,"","","",""];
         array[index]="big"
         setBigClass(array);
-        setChoose(item);
+        setChoose({name:item.name,position:index});
         
     }
 
     function handleClick(){
-        const orderItem={name:choose.name, cost:choose.cost};
-        props.onChange(orderItem);
+        if(choose.name){
+            const orderItem={name:"DRINK", cost:choose.cost ,extras:[choose.name.toLowerCase()],position:choose.position};
+            props.onChange(orderItem);  
+        }else{
+            setAlertMessage(true);
+            setTimeout(()=>{ setAlertMessage(false); }, 2000);
+        }
+        
     }
 
 
 
     return(
+
         <div className={props.className == "hidden"?"hidden":""}>
             <ScrollContainer className="scroll-container oddrinks">
                 {items.filter(function(item){return item.type === "drink"}).map(createItem)}
             </ScrollContainer>
+            <div className="odalert">
+            <Collapse in={alertMessage}>
+            <Alert severity="error">you must to select drink</Alert>
+            </Collapse>
+            </div>
             <div className="mobtn" onClick={handleClick}>
             <a>DONE</a>
             </div>   
             
-        </div>
-
-
-        
+        </div>  
     )
 }
 

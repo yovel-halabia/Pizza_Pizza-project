@@ -2,36 +2,64 @@ import React from 'react';
 import './OrderSalad.css';
 
 function OrderSalad(props){
-    const [extras , setExtras] = React.useState([]);
+    
+    let array = [];
+    let extraArray = [];
+    for(let i = 0 ; i < props.item.saladExtras.length ;i++){
+        array.push(false);
+    }
+    if(props.editItem){
+        extraArray = props.editItem.extras;
+        props.editItem.extras.map(item => array[item.position]= true);
+    }else if(props.item.extras){
+        extraArray = props.item.extras;
+        props.item.extras.map(item => array[item.position]= true);
+    }
+    
+    const [extras , setExtras] = React.useState(extraArray);
+    const [ischecked , setIsChecked] = React.useState(array);
 
-    function handleCheck(extra){
-        if(extras.includes(extra)){
-            setExtras(prev => prev.filter(function(item){return item !== extra}));
+    function handleCheck(extra,index){
+
+        if(extras.some(item=>item.name.includes(extra))){
+            setExtras(prev => prev.filter(function(item){return item.name !== extra}));
         }else{
-            setExtras(prev => [...prev, extra]);
+            setExtras(prev => [...prev, {name:extra , position:index}]);
         }
+        setIsChecked((prev)=>{
+            return prev.map((prevItem,prevIndex)=>{
+                    if(prevIndex === index){
+                        if(prevItem){
+                            return false; 
+                        }else{
+                            return true;
+                        }
+                        
+                    }else{
+                        return prevItem;
+                    }
+                })
+        });
     }
 
     function handleClick(item){
         let orderExtra;
         if(extras.length === 0){
-            orderExtra = ["with all"]
+            orderExtra = [{name:"with all"}]
         }else{
             orderExtra = extras;
         }
-        const orderItem={name:item.name, cost:item.cost , extras:orderExtra};
+        const orderItem={name:item.name, cost:item.cost ,saladExtras:props.item.saladExtras, image:props.item.image,width:props.item.width,height:props.item.height,extras:orderExtra, type:"salad"};
+        setExtras([]);
+        setIsChecked((prev)=>prev.map(()=>false));
         props.onChange(orderItem , props.id);
+        
     }
 
-    function createExtra(extra){
-        return(
-            <li className="osli"><input className="oscheckbox" type="checkbox" onChange={() =>handleCheck(extra)} />{extra}</li>
-        )
-    }
 
 
     return( 
-
+        
         <div className={props.className == "hidden"?"hidden":"osgrid"}>
         <div className="ostitle">
             <h3>{props.item.name}</h3>
@@ -43,7 +71,9 @@ function OrderSalad(props){
 
         <div className="oscontent">
             <ul>
-                {props.item.extras.map(createExtra)}
+                {props.item.saladExtras.map((extra,index)=>{
+                   return <li className="osli"><input className="oscheckbox" type="checkbox" checked={ischecked[index]} onChange={() =>handleCheck(extra,index)} />{extra}</li>
+                })}
             </ul>
         </div>
 

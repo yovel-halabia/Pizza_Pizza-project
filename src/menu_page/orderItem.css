@@ -1,0 +1,43 @@
+.oicard{
+    width:90%;
+    position: relative;
+    margin:0 auto;
+    margin-bottom:20px;
+    padding: 0 10px;
+    padding-top: 20px;
+    border: 1px solid #e5e5e5 ;
+}
+
+.oicard h1{
+    font-size:18px;
+    font-weight: 700;
+    text-align:left;
+    text-decoration: underline;
+}
+
+.oicard li{
+    font-size:14px;
+    text-align:left;
+    list-style-type: none;
+    margin-bottom: 5px;
+}
+
+.oicard li:before{
+    content: "-";   
+}
+
+.oicard p{
+    margin:0;
+    font-weight: 700;
+    text-align:right;
+}
+
+.oibuttons{
+    position:absolute;
+    right: 15px;
+    top: 10px;
+}
+
+.oicancel{
+    margin-left: 10px;
+}

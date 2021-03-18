@@ -1,0 +1,12 @@
+.sdcontent{
+  text-align:left;  
+}
+
+.sdcontent input{
+    display: block;
+}
+
+.sdcontent button{
+    display: block;
+    
+}

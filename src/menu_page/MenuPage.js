@@ -12,14 +12,13 @@ function MenuPage(props){
     //send the location to mnavbar
     props.getLocation("menu");
 
-    const history= useHistory();
-    
+
     const cookies = new Cookies();
-
-    console.log(cookies.get('orderItems'));
+    const [orderItems , setOrderItems] = React.useState(cookies.get('orderItems'));
+    const [isCheckout ,setIsCheckout] = React.useState(false);
     
 
-    
+    const history= useHistory(); 
     
 
     //create new Item
@@ -38,13 +37,24 @@ function MenuPage(props){
     function handleClick(item){
 
         if(item.type === "drink" || item.type === "dessert"){
-            // add the item to order lists
-            console.log(true);
-        }else{
+            if(cookies.get('orderItems')){
+               cookies.set('orderItems',[...cookies.get('orderItems'),item],{path:'/'});  
+            }else{
+               cookies.set('orderItems',[item],{path:'/'});
+            }
+           
+            setOrderItems(cookies.get('orderItems'));
+            window.location.replace("/menu#checkout");
             
+
+        }else{
             cookies.set('item', item , { path: '/' });
             history.push("/make-order");
          }
+    }
+
+    function onCheckout(bool){
+        setIsCheckout(bool);
     }
         
     
@@ -54,9 +64,13 @@ function MenuPage(props){
     return(
 
         <div className="mecontent">
-            <Dropdown /> 
+            
+            {!isCheckout&&<Dropdown />}
                 
             <div className="mescroll">
+                
+                {!isCheckout&&
+                <div>
                 <div className="mesection" id="pizza"><text>PIZZA</text></div>
                 {items.filter(item => item.type.includes("pizza")).map(createItem)} 
 
@@ -71,8 +85,13 @@ function MenuPage(props){
 
                 <div className="mesection" id="beverages"><text>BEVERAGES</text></div>
                 {items.filter(item => item.type.includes("drink")).map(createItem)} 
+                </div>
+                }
 
-                <Checkout />
+
+                <Checkout id="checkout" orderItems={orderItems} onCheckout={onCheckout}/>
+
+                
             </div>
         </div>
         

@@ -7,11 +7,35 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import Alert from '@material-ui/lab/Alert';
 import Collapse from '@material-ui/core/Collapse';
 import ChooseBox from './ChooseBox';
+import { isConstructorDeclaration } from 'typescript';
 
 function OrderPizza(props){
     const [chooseBox , setChooseBox] = React.useState({display:false,extraPosition:"",extra:""});
-    const [orderExtras , setOrderExtras] = React.useState([]);
-    const [pizzaSliceExtras , setPizzaSliceExtras] = React.useState({pizzaSlice1:[],pizzaSlice2:[],pizzaSlice3:[],pizzaSlice4:[]});
+    let order=[];
+    let slicesArray = {pizzaSlice1:[],pizzaSlice2:[],pizzaSlice3:[],pizzaSlice4:[]};
+    if(props.item.extras){
+        order=props.item.extras.filter(item => item.name !== "empty");
+        props.item.extras.forEach(extraItem=>{
+            
+            let extra;
+            if(extraItem.name.split(' ').length ===3){
+            extra = extraItem.name.split(' ')[1]+" "+extraItem.name.split(' ')[2];
+            }else{
+            extra = extraItem.name.split(' ')[1];
+            } 
+
+               
+
+            
+
+            if(extraItem.slices){
+                extraItem.slices.forEach(slices=>slicesArray = {...slicesArray, [slices]: [...slicesArray[slices],extra]});
+            }
+            
+        })    
+    }
+    const [orderExtras , setOrderExtras] = React.useState(order);
+    const [pizzaSliceExtras , setPizzaSliceExtras] = React.useState(slicesArray);
     const [alertMessage , setAlertMessage] = React.useState({display:false , content:""})
 
     function createExtra(extra, index){
@@ -29,8 +53,10 @@ function OrderPizza(props){
     }
 
     function handleClick(){
-        const extrasArray = orderExtras.map((item)=>{return item.name});
-        const orderItem ={name:props.item.name, cost:props.item.cost , extras:extrasArray};
+        let orderItem ={name:props.item.name, cost:props.item.cost , extras:orderExtras,type:"pizza"};
+        if(orderExtras.length === 0){
+            orderItem ={name:props.item.name, cost:props.item.cost , extras:[{name:"empty"}],type:"pizza"};
+        }  
         props.onChange(orderItem , props.id);
     }
 

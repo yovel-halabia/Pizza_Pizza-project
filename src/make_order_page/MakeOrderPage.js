@@ -1,6 +1,5 @@
 import React from 'react';
 import Cookies from 'universal-cookie';
-import {useHistory} from 'react-router-dom';
 import './MakeOrderPage.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
@@ -15,9 +14,8 @@ function MakeOrder(props){
 
     const cookies = new Cookies();
     const item = cookies.get('item');
-    const orderItems = cookies.get('orderItems');
-
-    const history =useHistory();
+    let orderItems = cookies.get('orderItems');
+    const index = cookies.get('index');
 
 
     function checkOrder(){
@@ -43,8 +41,18 @@ function MakeOrder(props){
     }
 
     function handleOrder(orderItem){
-        //update the orderItems
-        if(orderItems){
+        if(orderItem && index){ 
+            orderItems = orderItems.map((item,indexItem)=>{
+                if(indexItem == index){
+                    return orderItem;
+                }else{
+                    return item;
+                }
+            });
+            cookies.set('orderItems',orderItems,{path:'/'});
+            cookies.set('index',"",{path:'/'});
+
+        }else if(orderItems){
             cookies.set("orderItems",[...orderItems,orderItem],{path:'/'});
         }else{
             cookies.set("orderItems",[orderItem],{path:'/'});
