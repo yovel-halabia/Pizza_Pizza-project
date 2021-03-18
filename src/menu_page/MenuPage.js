@@ -1,6 +1,5 @@
 import React from 'react';
 import {useHistory} from 'react-router-dom';
-import Cookies from 'universal-cookie';
 import './MenuPage.css';
 import Dropdown from './Dropdown';
 import Item from './Item';
@@ -13,11 +12,11 @@ function MenuPage(props){
     props.getLocation("menu");
 
 
-    const cookies = new Cookies();
-    const [orderItems , setOrderItems] = React.useState(cookies.get('orderItems'));
+    const localStorage =window.localStorage;
+    const [orderItems , setOrderItems] = React.useState(JSON.parse(localStorage.getItem('orderItems')));
     const [isCheckout ,setIsCheckout] = React.useState(false);
     
-
+    
     const history= useHistory(); 
     
 
@@ -37,20 +36,22 @@ function MenuPage(props){
     function handleClick(item){
 
         if(item.type === "drink" || item.type === "dessert"){
-            if(cookies.get('orderItems')){
-               cookies.set('orderItems',[...cookies.get('orderItems'),item],{path:'/'});  
+            if(JSON.parse(localStorage.getItem('orderItems'))){
+
+                localStorage.setItem('orderItems',JSON.stringify([...JSON.parse(localStorage.getItem('orderItems')),item]));  
             }else{
-               cookies.set('orderItems',[item],{path:'/'});
+
+                localStorage.setItem('orderItems',JSON.stringify([item]));
             }
            
-            setOrderItems(cookies.get('orderItems'));
+            setOrderItems(JSON.parse(localStorage.getItem('orderItems')));
             window.location.replace("/menu#checkout");
             
 
         }else{
-            cookies.set('item', item , { path: '/' });
+            localStorage.setItem('item',JSON.stringify(item));
             history.push("/make-order");
-         }
+        }
     }
 
     function onCheckout(bool){

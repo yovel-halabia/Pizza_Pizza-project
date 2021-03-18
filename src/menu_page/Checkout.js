@@ -6,11 +6,9 @@ import { faCaretDown, faCar, faStoreAlt,  faShoppingCart, faMapMarkerAlt} from '
 import Alert from '@material-ui/lab/Alert';
 import Collapse from '@material-ui/core/Collapse';
 import TextField from '@material-ui/core/TextField';
-import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 import DateFnsUtils from '@date-io/date-fns';
-import Cookies from 'universal-cookie';
 import SelectAddress from './SelectAddress';
 import OrderItem from './OrderItem';
 
@@ -28,7 +26,9 @@ function Checkout(props){
 
 
 
-    React.useEffect(()=>{ setOrderItems(props.orderItems); },[props.orderItems]);
+    React.useEffect(()=>{setOrderItems(props.orderItems); },[props.orderItems]);
+
+
     const amount = ()=>{ 
         let amount=0;
         if(orderItems){
@@ -46,7 +46,7 @@ function Checkout(props){
         isempty=false;
     }
     
-    const cookies = new Cookies();
+    const localStorage=window.localStorage;
     const history= useHistory();
 
     function handleCheckDelivery(){
@@ -68,14 +68,14 @@ function Checkout(props){
     }
 
     function onCancel(index){
-        cookies.set("orderItems",orderItems.filter((item,itemIndex)=>itemIndex !== index),{path:'/'});
+        localStorage.setItem('orderItems',JSON.stringify(orderItems.filter((item,itemIndex)=>itemIndex !== index)));
         setOrderItems(prev=>prev.filter((item,prevIndex)=>prevIndex !== index));
 
     }
 
     function onEdit(index,item){
-        cookies.set('item',  item, { path: '/' });
-        cookies.set('index',index,{path:'/'});
+        localStorage.setItem('item',JSON.stringify(item))
+        localStorage.setItem('index',JSON.stringify(index));
         history.push("/make-order");
     }
 
@@ -147,7 +147,7 @@ function Checkout(props){
             setFinishOrderValidation(prev=>{return{...prev,loading:true}});
             setTimeout(()=>setFinishOrderValidation(prev=>{return{...prev,loading:false}}),2000);
             setTimeout(()=>setFinishOrderValidation(prev=>{return{...prev,done:true}}),2000);
-            setTimeout(()=>{setFinishOrderValidation(prev=>{return{...prev,done:false}});window.location.replace("/home");cookies.set('orderItems',"",{path:'/'});},4000);
+            setTimeout(()=>{setFinishOrderValidation(prev=>{return{...prev,done:false}});window.location.replace("/home");localStorage.clear();},4000);
         }
     }
   
@@ -225,7 +225,7 @@ function Checkout(props){
                         <Alert severity="error">you must to fill all fileds</Alert>
                     </Collapse>
                     <Collapse in={finishOrderValidation.done}>
-                        <Alert severity="success">you must to fill all fileds</Alert>
+                        <Alert severity="success">the order sent successfully to the restaurant</Alert>
                     </Collapse>
                     <div className="cobtn" onClick={finishOrder}>
                         <text>checkout</text>

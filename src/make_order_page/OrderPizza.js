@@ -7,7 +7,6 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import Alert from '@material-ui/lab/Alert';
 import Collapse from '@material-ui/core/Collapse';
 import ChooseBox from './ChooseBox';
-import { isConstructorDeclaration } from 'typescript';
 
 function OrderPizza(props){
     const [chooseBox , setChooseBox] = React.useState({display:false,extraPosition:"",extra:""});

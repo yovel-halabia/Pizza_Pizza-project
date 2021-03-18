@@ -1,6 +1,5 @@
 import React from 'react';
 import "./OrderDeal.css";
-import Cookies from 'universal-cookie';
 import {items} from '../data';
 import OrderPizza from './OrderPizza';
 import OrderDrink from './OrderDrink';
@@ -31,8 +30,8 @@ function OrderDeal(props){
     }
     const [orderPosition,setOrderPosition] = React.useState(array);
 
-    const cookies = new Cookies();
-    const item = cookies.get('item');
+    const localStorage =window.localStorage;
+    const item = JSON.parse(localStorage.getItem('item'));
     
 
     

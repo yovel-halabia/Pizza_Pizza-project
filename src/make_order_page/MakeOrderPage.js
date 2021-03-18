@@ -1,5 +1,4 @@
 import React from 'react';
-import Cookies from 'universal-cookie';
 import './MakeOrderPage.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
@@ -12,10 +11,10 @@ import OrderDeal from './OrderDeal';
 
 function MakeOrder(props){
 
-    const cookies = new Cookies();
-    const item = cookies.get('item');
-    let orderItems = cookies.get('orderItems');
-    const index = cookies.get('index');
+    const localStorage =window.localStorage;
+    const item = JSON.parse(localStorage.getItem('item'));
+    let orderItems = JSON.parse(localStorage.getItem('orderItems'));
+    const index = JSON.parse(localStorage.getItem('index'));
 
 
     function checkOrder(){
@@ -49,13 +48,13 @@ function MakeOrder(props){
                     return item;
                 }
             });
-            cookies.set('orderItems',orderItems,{path:'/'});
-            cookies.set('index',"",{path:'/'});
+            localStorage.setItem('orderItems', JSON.stringify(orderItems));
+            localStorage.setItem('index',JSON.stringify(""));
 
         }else if(orderItems){
-            cookies.set("orderItems",[...orderItems,orderItem],{path:'/'});
+            localStorage.setItem('orderItems', JSON.stringify([...orderItems,orderItem]));
         }else{
-            cookies.set("orderItems",[orderItem],{path:'/'});
+            localStorage.setItem('orderItems', JSON.stringify([orderItem]));
         }
         handleCancel();
     }

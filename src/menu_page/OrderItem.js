@@ -2,7 +2,6 @@ import React from 'react';
 import './orderItem.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faEdit } from '@fortawesome/free-solid-svg-icons';
-import { isPostfixUnaryExpression } from 'typescript';
 
 export default function OrderItem(props) {
 
