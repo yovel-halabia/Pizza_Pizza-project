@@ -25,6 +25,11 @@ function App() {
   function getLocation(location){setLocation(location);}
 
 
+
+
+
+
+
   return (
     <div className="background">
       <NavBar setTrue={setNavClickTrue}/>

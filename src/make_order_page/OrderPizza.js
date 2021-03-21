@@ -256,7 +256,7 @@ return(
 
         
 
-        <div className="opbtn mobtn" onClick={handleClick}>
+        <div className="opbtn mobtn" onClick={chooseBox.display?"":handleClick}>
             <a>DONE</a>
         </div>
     </div>    

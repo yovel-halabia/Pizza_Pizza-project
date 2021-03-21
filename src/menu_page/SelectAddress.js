@@ -21,8 +21,8 @@ export default function SelectAddress(props) {
 
 
     function handleClick(){
-      if(!street || !option){
-        setValidation({bool:true,content:"you must choose street and floor/department/entery"});
+      if(!city || !street || !option){
+        setValidation({bool:true,content:"you must fill all fieldS "});
         setTimeout(()=>setValidation({bool:false}), 3000);
         
       }else{

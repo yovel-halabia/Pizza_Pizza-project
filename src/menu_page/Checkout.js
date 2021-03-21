@@ -49,6 +49,12 @@ function Checkout(props){
     const localStorage=window.localStorage;
     const history= useHistory();
 
+    React.useEffect(()=>{
+        if(selectClass.pickupClass === ""){
+            setDeliveryAdress({class:"hidden",address:"select delivery address"});
+        }
+    },[selectClass.pickupClass]);
+
     function handleCheckDelivery(){
         setDropdown({name:"Delivery", icon:faCar});
         setSelectClass({pickupClass:"hidden" ,deliveryClass:""})
@@ -88,7 +94,7 @@ function Checkout(props){
                         onEdit={onEdit} isCheckout={isCheckout}
                         />)}
 
-                        <h4>amount:{amount()}₪</h4>
+                        <h4 className="coamount">amount:{amount()}₪</h4>
                     </div>
 
                 )
@@ -120,6 +126,9 @@ function Checkout(props){
         }else if(selectClass.pickupClass === "hidden" && selectClass.deliveryClass === "hidden"){
             setValidation({bool:true,content:"you dont choose your delivery option"});
             setTimeout(()=>setValidation({bool:false}), 3000);
+        }else if(deliveryAddress.address === "select delivery address"&& selectClass.deliveryClass != "hidden"){
+            setValidation({bool:true,content:"you dont choose your delivery address"});
+            setTimeout(()=>setValidation({bool:false}), 3000);
         }else{
             props.onCheckout(true);
             setIsCheckout(true);
@@ -150,13 +159,15 @@ function Checkout(props){
             setTimeout(()=>{setFinishOrderValidation(prev=>{return{...prev,done:false}});window.location.replace("/home");localStorage.clear();},4000);
         }
     }
+
+
   
 
 
 
     return(
         <div>
-            <a onClick={returnFromCheckout}>return</a>
+            <a className="creturn" onClick={returnFromCheckout}>return <FontAwesomeIcon icon={faCaretDown} style={{ transform: "rotate(-90deg)"}}/></a>
             <h5 id="checkout">CHECKOUT</h5>
 
             <div  class="dropdown show codr">
@@ -197,7 +208,7 @@ function Checkout(props){
 
             {isCheckout&&
                 <div>
-                <h1>PAYMENT</h1>
+                <h1 className="copayment">PAYMENT</h1>
                 <TextField error={checkInput[0]===false&&true} helperText={checkInput[0]===false&&"you fill the filed"}  onChange={(e)=>inputValidation(e,0)} className="cotf"  label="Full Name" margin="normal" variant="outlined" />
                 <TextField error={checkInput[1]===false&&true} helperText={checkInput[1]===false&&"you fill the filed"}  onChange={(e)=>inputValidation(e,1)} className="cotf" label="Email" margin="normal" variant="outlined" />
                 <TextField error={checkInput[2]===false&&true} helperText={checkInput[2]===false&&"you fill the filed"}  onChange={(e)=>inputValidation(e,2)} className="cotf" label="Phone" margin="normal" variant="outlined" />

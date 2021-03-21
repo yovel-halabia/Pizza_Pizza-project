@@ -1,5 +1,6 @@
 import React from 'react';
 import {useHistory} from 'react-router-dom';
+import Scrollspy from 'react-scrollspy';
 import './MenuPage.css';
 import Dropdown from './Dropdown';
 import Item from './Item';
@@ -15,10 +16,19 @@ function MenuPage(props){
     const localStorage =window.localStorage;
     const [orderItems , setOrderItems] = React.useState(JSON.parse(localStorage.getItem('orderItems')));
     const [isCheckout ,setIsCheckout] = React.useState(false);
+    const [scrollPosition, setScrollPosition] = React.useState(0);
     
     
-    const history= useHistory(); 
+    const history= useHistory();
     
+    let height;
+    if(isCheckout){
+       height={height:"100%"} 
+    }else{
+        height={height:"91%"} 
+    }
+    
+
 
     //create new Item
     function createItem(item) {
@@ -57,7 +67,13 @@ function MenuPage(props){
     function onCheckout(bool){
         setIsCheckout(bool);
     }
-        
+
+
+    function onScroll(){
+       setScrollPosition(document.getElementById("scroll").scrollTop);
+    }
+    
+    
     
 
 
@@ -65,10 +81,12 @@ function MenuPage(props){
     return(
 
         <div className="mecontent">
+
+
             
-            {!isCheckout&&<Dropdown />}
+            {!isCheckout&&<Dropdown scrollPosition={scrollPosition}/>}
                 
-            <div className="mescroll">
+            <div className="mescroll" style={height} id="scroll" onScroll={onScroll} >
                 
                 {!isCheckout&&
                 <div>

@@ -1,10 +1,16 @@
 
 .mo{
     position: relative;
+    width:80%;
+    margin: 0 auto;
+    background-color: white;
+    text-align: center;
+    opacity: 0.9;
 }
 
 .mocontent{
     padding: 25px 5px;
+    padding-top: 35px;
 }
 .mobtn{
     width:80%;
@@ -17,10 +23,12 @@
 }
 
 .moreturn{
-    position: absolute;
+    position: relative;
     text-decoration: underline;
     color: black;
-    font-size:12px;
+    font-size:14px;
+    float:right;
+    top:5px;
     right:5px;
 }
 

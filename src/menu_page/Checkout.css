@@ -7,6 +7,15 @@
     margin: 0;
 }
 
+.creturn{
+    display: block;
+    text-align: right;
+    margin-bottom: 10px;
+    position: relative;
+    right:10px;
+    top:5px;
+}
+
 .codr{
     width:80%;
     margin: 0 auto;
@@ -34,6 +43,22 @@
 }
 
 .cooreder-title{
+    text-align:left;
+    margin: 10px 5%;
+    font-weight: 700;
+    font-size:20px;
+}
+
+.coamount{
+    display: block;
+    text-align: right;
+    position: relative;
+    right:10px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.copayment{
     text-align:left;
     margin: 10px 5%;
     font-weight: 700;

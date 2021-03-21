@@ -58,6 +58,7 @@ function OrderDrink(props){
             <Alert severity="error">you must to select drink</Alert>
             </Collapse>
             </div>
+            <h4>{choose.name}</h4>
             <div className="mobtn" onClick={handleClick}>
             <a>DONE</a>
             </div>   
