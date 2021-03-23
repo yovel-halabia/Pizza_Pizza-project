@@ -91,19 +91,34 @@ function MenuPage(props){
                 {!isCheckout&&
                 <div>
                 <div className="mesection" id="pizza"><text>PIZZA</text></div>
-                {items.filter(item => item.type.includes("pizza")).map(createItem)} 
+                <div className="megrid">
+                    {items.filter(item => item.type.includes("pizza")).map(createItem)}
+                </div>
+                 
 
                 <div className="mesection" id="deals"><text>DEALS</text></div>
-                {items.filter(item => item.type.includes("deal")).map(createItem)} 
+                <div className="megrid">
+                    {items.filter(item => item.type.includes("deal")).map(createItem)}
+                </div>
+                 
 
                 <div className="mesection" id="salad"><text>SALAD</text></div>
-                {items.filter(item => item.type.includes("salad")).map(createItem)} 
+                <div className="megrid">
+                    {items.filter(item => item.type.includes("salad")).map(createItem)}
+                </div>
+                 
 
                 <div className="mesection" id="desserts"><text>DESSERTS</text></div>
-                {items.filter(item => item.type.includes("dessert")).map(createItem)} 
+                <div className="megrid">
+                    {items.filter(item => item.type.includes("dessert")).map(createItem)}
+                </div>
+                 
 
                 <div className="mesection" id="beverages"><text>BEVERAGES</text></div>
-                {items.filter(item => item.type.includes("drink")).map(createItem)} 
+                <div className="megrid">
+                    {items.filter(item => item.type.includes("drink")).map(createItem)}
+                </div>
+                 
                 </div>
                 }
 

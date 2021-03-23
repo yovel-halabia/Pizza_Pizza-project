@@ -7,6 +7,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import Alert from '@material-ui/lab/Alert';
 import Collapse from '@material-ui/core/Collapse';
 import ChooseBox from './ChooseBox';
+import { convertToObject } from 'typescript';
 
 function OrderPizza(props){
     const [chooseBox , setChooseBox] = React.useState({display:false,extraPosition:"",extra:""});
@@ -35,20 +36,51 @@ function OrderPizza(props){
     }
     const [orderExtras , setOrderExtras] = React.useState(order);
     const [pizzaSliceExtras , setPizzaSliceExtras] = React.useState(slicesArray);
-    const [alertMessage , setAlertMessage] = React.useState({display:false , content:""})
+    const [alertMessage , setAlertMessage] = React.useState({display:false , content:""});
+    const [widthSize, setWidthSize] = React.useState(window.innerWidth);
+
+    window.addEventListener("resize", function () {
+        setWidthSize(window.innerWidth);
+    });
 
     function createExtra(extra, index){
         return(
             <Draggable draggableId={extra.name} index={index}>
                 {(provided,snapshot) => (
                     <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} >
-                        <img style={{width:extra.width, height:extra.height}} src={extra.image}/>    
+                        {returnImage(extra)}  
                         <br/>
                         <text className={snapshot.isDragging&&"hidden"}>{extra.name}</text>
                     </div>   
                 )}
             </Draggable>    
         )
+    }
+
+    function returnImage(extra){
+        if(!extra.width && !extra.height){
+            return <img src={extra.image}/>
+        }else if(widthSize <=768){
+            if(extra.width){
+                return <img style={{width:"40px"}} src={extra.image}/>
+            }else if(extra.height){
+                return <img style={{height:"20px"}} src={extra.image}/>
+            }
+
+        }else if(widthSize >=768 && widthSize <= 992){
+            console.log("Asd")
+            if(extra.width){
+                return <img style={{width:"50px"}} src={extra.image}/>
+            }else if(extra.height){
+                return <img style={{height:"30px"}} src={extra.image}/>
+            }
+        }else if(widthSize > 992){
+            if(extra.width){
+                return <img style={{width:"60px"}} src={extra.image}/>
+            }else if(extra.height){
+                return <img style={{height:"40px"}} src={extra.image}/>
+            }
+        }
     }
 
     function handleClick(){
@@ -127,6 +159,7 @@ function OrderPizza(props){
     }
 
     function extraOnPizza(pizza_slice){
+
         
         let arrayExtra = [];
         let arrayPosition=[];
@@ -157,15 +190,32 @@ function OrderPizza(props){
                 arrayExtra.push(pizzaSlice[2]);
                 }
             }
+            
+            let width;
+            let height;
 
 
-            let width = Math.floor((Math.random() *25)+arrayPosition[i]).toString();
-            let height = Math.floor(Math.random() * 90).toString();
+            if(window.innerWidth >=768 && window.innerWidth < 992){
+                width = Math.floor((Math.random() *40)+arrayPosition[i]).toString();
+                height = Math.floor(Math.random() * 120).toString();
+                while((width <=40 && height>=120)||(width>40 && width<=80 && height>=110)||(width>80 && width<=100 && height>=60)){
+                height = Math.floor(Math.random() * 120).toString();
+                }
 
-
-            while((width <=20 && height>=80)||(width>20 && width<=40 && height>=70)||(width>40 && width<=60 && height>=60)||
-            (width>60 && width<=70 && height>=40) || (width>70 && width<=80 && height>=30) ){
+            }else if(window.innerWidth >=992){
+                width = Math.floor((Math.random() *100)+arrayPosition[i]).toString();
+                height = Math.floor(Math.random() * 150).toString();
+                while((width <=60 && height>=170)||(width>60 && width<=80 && height>=160)||(width>80 && width<=100 && height>=150)||(width>100&&width<=120&&height>=140)||
+                (width<=140 && width > 160 && height>=110)){
+                    height = Math.floor(Math.random() * 120).toString();
+                }
+            }else{
+                width = Math.floor((Math.random() *25)+arrayPosition[i]).toString();
                 height = Math.floor(Math.random() * 90).toString();
+                while((width <=20 && height>=80)||(width>20 && width<=40 && height>=70)||(width>40 && width<=60 && height>=60)||
+                (width>60 && width<=70 && height>=40) || (width>70 && width<=80 && height>=30) ){
+                height = Math.floor(Math.random() * 90).toString();
+                }
             }
             
 
@@ -223,19 +273,22 @@ return(
                         );
                         })}
                     </div>
-                    <img  src="../images/menu_pic/pizza_sec/pizza.png" style={{with:"250px",height:"250px"}}/>
+                    <img className="opimg" src="../images/menu_pic/pizza_sec/pizza.png"/>
                     
                 </div>
                 
                 <div className="opextras">
-                    <text>Drag & Drop</text>
-                    <Droppable droppableId="extras-container">
-                    {(provided)=>(
-                    <div ref={provided.innerRef} {...provided.droppableProps} className="opdrag">
-                        {extras.map(createExtra)}
-                        {provided.placeholder}
-                    </div>)}
-                    </Droppable>
+                    <div className="opextrasabs">
+                        <text>Drag & Drop</text>
+                        <Droppable droppableId="extras-container">
+                        {(provided)=>(
+                        <div ref={provided.innerRef} {...provided.droppableProps} className="opdrag">
+                            {extras.map(createExtra)}
+                            {provided.placeholder}
+                        </div>)}
+                        </Droppable>  
+                    </div>
+                    
                 </div>
             
         </DragDropContext>
@@ -250,15 +303,15 @@ return(
 
         <div className="opalerts">
             <Collapse in={alertMessage.display}>
-            <Alert severity="error">{alertMessage.content}</Alert>
+            <Alert className="alert" severity="error">{alertMessage.content}</Alert>
             </Collapse>
         </div>
 
         
 
-        <div className="opbtn mobtn" onClick={chooseBox.display?"":handleClick}>
-            <a>DONE</a>
-        </div>
+        <button className="opbtn mobtn" onClick={chooseBox.display?"":handleClick}>
+            DONE
+        </button>
     </div>    
 
 )

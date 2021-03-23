@@ -1,5 +1,6 @@
 .sdcontent{
-  text-align:left;  
+  margin: 0 auto;
+  width:60%;  
 }
 
 .sdcontent input{
@@ -7,6 +8,32 @@
 }
 
 .sdcontent button{
-    display: block;
-    
+  width: 100%;
+  padding: 5px 0;
+  margin: 5px 0;
+  background-color: #E41E26;
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;   
 }
+
+@media only screen and (min-width: 992px) {
+
+  .sdcontent button{
+    font-size: 16px;
+    padding: 7px 0;
+  }
+  
+}
+
+@media only screen and (min-width: 1200px) {
+
+  .sdcontent button{
+    font-size: 18px;
+    padding: 10px 0;
+  }
+  
+}
+

@@ -22,7 +22,7 @@ export default function SelectAddress(props) {
 
     function handleClick(){
       if(!city || !street || !option){
-        setValidation({bool:true,content:"you must fill all fieldS "});
+        setValidation({bool:true,content:"you must fill all fields "});
         setTimeout(()=>setValidation({bool:false}), 3000);
         
       }else{
@@ -98,7 +98,7 @@ export default function SelectAddress(props) {
           />
 
 
-          <TextField onChange={handleOptionChange} disabled={disable}  label="floor/department/entery" margin="normal" variant="outlined" />
+          <TextField style={{width:"100%"}} onChange={handleOptionChange} disabled={disable}  label="floor/department/entery" margin="normal" variant="outlined" />
           
           <Collapse in={validation.bool}>
             <Alert severity="error">{validation.content}</Alert>

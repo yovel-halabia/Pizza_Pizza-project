@@ -13,19 +13,50 @@ function DropDown(props){
     const [dropName, setDropName]= React.useState("pizza");
 
     React.useEffect(()=>{
-        if(props.scrollPosition >= 0 && props.scrollPosition < 1000){
-            setDropName("pizza");
-        }else if(props.scrollPosition >=1000 && props.scrollPosition <2300){
-            setDropName("deals"); 
-        }else if(props.scrollPosition >= 2300 && props.scrollPosition <3300){
-            setDropName("salad"); 
-        }else if(props.scrollPosition >= 3300 && props.scrollPosition <4300){
-            setDropName("desserts"); 
-        }else if(props.scrollPosition >= 4300 && props.scrollPosition < 5600){
-            setDropName("beverages"); 
-        }else if(props.scrollPosition >= 5600){
-            setDropName("checkout"); 
+        if(window.innerWidth <= 768){
+            if(props.scrollPosition >= 0 && props.scrollPosition < 1000){
+                setDropName("pizza");
+            }else if(props.scrollPosition >=1000 && props.scrollPosition <2300){
+                setDropName("deals"); 
+            }else if(props.scrollPosition >= 2300 && props.scrollPosition <3300){
+                setDropName("salad"); 
+            }else if(props.scrollPosition >= 3300 && props.scrollPosition <4300){
+                setDropName("desserts"); 
+            }else if(props.scrollPosition >= 4300 && props.scrollPosition < 5600){
+                setDropName("beverages"); 
+            }else if(props.scrollPosition >= 5600){
+                setDropName("checkout"); 
+            } 
+        }else if(window.innerWidth > 768&&window.innerWidth  <992){
+            if(props.scrollPosition >= 0 && props.scrollPosition < 800){
+                setDropName("pizza");
+            }else if(props.scrollPosition >=800 && props.scrollPosition <1600){
+                setDropName("deals"); 
+            }else if(props.scrollPosition >= 1600 && props.scrollPosition <2300){
+                setDropName("salad"); 
+            }else if(props.scrollPosition >= 2300 && props.scrollPosition <3000){
+                setDropName("desserts"); 
+            }else if(props.scrollPosition >= 3000 && props.scrollPosition < 3700){
+                setDropName("beverages"); 
+            }else if(props.scrollPosition >= 3700){
+                setDropName("checkout"); 
+            } 
+        }else if(window.innerWidth >=992){
+            if(props.scrollPosition >= 0 && props.scrollPosition < 500){
+                setDropName("pizza");
+            }else if(props.scrollPosition >=500 && props.scrollPosition <1200){
+                setDropName("deals"); 
+            }else if(props.scrollPosition >= 1200 && props.scrollPosition <1700){
+                setDropName("salad"); 
+            }else if(props.scrollPosition >= 1700 && props.scrollPosition <2100){
+                setDropName("desserts"); 
+            }else if(props.scrollPosition >= 2100 && props.scrollPosition < 2500){
+                setDropName("beverages"); 
+            }else if(props.scrollPosition >= 2500){
+                setDropName("checkout"); 
+            } 
         }
+
 
     },[props.scrollPosition]);
 

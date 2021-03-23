@@ -196,7 +196,7 @@ const extras=[
     {
         name:"chili",
         image:"../images/extras/chili.png",
-        width:"40px",
+        width:true,
     },
     {
         name:"egg",
@@ -226,7 +226,7 @@ const extras=[
     {
         name:"tomato",
         image:"../images/extras/tomato.png",
-        height:"20px"  
+        height:true  
     },
     {
         name:"tuna",

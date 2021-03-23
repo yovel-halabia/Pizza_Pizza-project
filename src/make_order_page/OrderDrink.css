@@ -34,3 +34,44 @@
 .odalert{
     margin: 10px 0;
 }
+
+@media only screen and (min-width: 768px) {
+    
+    .odimg{
+        width: 95px;
+        height: 180px;
+    }
+    
+    .big{
+        width:140px; 
+        height: 260px;
+    }
+
+    @keyframes big {
+        from {width:95px; height: 180px;}
+        to {width:140px; height: 260px;}
+    }
+
+}
+
+
+@media only screen and (min-width: 992px) {
+    
+    .odimg{
+        width: 95px;
+        height: 210px;
+    }
+    
+    .big{
+        width:150px; 
+        height: 290px;
+    }
+
+    @keyframes big {
+        from {width:95px; height: 210px;}
+        to {width:150px; height: 290px;}
+    }
+
+}
+
+

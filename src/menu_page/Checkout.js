@@ -34,7 +34,6 @@ function Checkout(props){
         if(orderItems){
             orderItems.map(item=>{
             amount+=parseInt(item.cost);
-            console.log(amount)
             })
         }
         
@@ -120,9 +119,14 @@ function Checkout(props){
     }
 
     function goToCheckout(){
-        if(orderItems.length===0 ){
+        if(!orderItems){
             setValidation({bool:true,content:"you must choose somting to order"});
             setTimeout(()=>setValidation({bool:false}), 3000);
+        }else if(orderItems){
+            if(orderItems.length===0){
+                setValidation({bool:true,content:"you must choose somting to order"});
+                setTimeout(()=>setValidation({bool:false}), 3000);    
+            }
         }else if(selectClass.pickupClass === "hidden" && selectClass.deliveryClass === "hidden"){
             setValidation({bool:true,content:"you dont choose your delivery option"});
             setTimeout(()=>setValidation({bool:false}), 3000);
@@ -167,25 +171,25 @@ function Checkout(props){
 
     return(
         <div>
-            <a className="creturn" onClick={returnFromCheckout}>return <FontAwesomeIcon icon={faCaretDown} style={{ transform: "rotate(-90deg)"}}/></a>
+            {isCheckout&&<a href="#" className="creturn" onClick={returnFromCheckout}>return <FontAwesomeIcon icon={faCaretDown} style={{ transform: "rotate(-90deg)"}}/></a>}
             <h5 id="checkout">CHECKOUT</h5>
 
             <div  class="dropdown show codr">
-                <a   className="dropdown-button"   id="dropdownMenuLink" data-toggle="dropdown">
+                <button   className="dropdown-button"   id="dropdownMenuLink" data-toggle="dropdown">
                     <FontAwesomeIcon icon={dropdown.icon}/> {dropdown.name}  <FontAwesomeIcon className="drop-icon" icon={faCaretDown}/>
-                </a>
+                </button>
 
                 {/* get the css from dropdown component */}
                 <div class="dropdown-menu codrme" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" onClick={handleCheckDelivery}><FontAwesomeIcon icon={faCar}/> Delivery</a>
+                    <a href="#" class="dropdown-item" onClick={handleCheckDelivery}><FontAwesomeIcon icon={faCar}/> Delivery</a>
                     <hr/>
-                    <a class="dropdown-item"  onClick={handleCheckPickup}><FontAwesomeIcon  icon={faStoreAlt}/> Pickup</a>
+                    <a href="#" class="dropdown-item"  onClick={handleCheckPickup}><FontAwesomeIcon  icon={faStoreAlt}/> Pickup</a>
                 </div>
                 
             </div> 
             
             <div className="coselect">
-                <a className={selectClass.deliveryClass} onClick={openSelectAdress}><FontAwesomeIcon icon={faMapMarkerAlt}/> {deliveryAddress.address}</a>
+                <button  className={selectClass.deliveryClass} onClick={openSelectAdress}><FontAwesomeIcon icon={faMapMarkerAlt}/> {deliveryAddress.address}</button>
                 <SelectAddress className={deliveryAddress.class} onSelectAddressReturn={onSelectAddressReturn}/>   
                 <text className={selectClass.pickupClass}>The order will be ready between 20-30 minutes after ordering</text>
             </div>
@@ -201,14 +205,12 @@ function Checkout(props){
             </Collapse>
 
             {!isCheckout&&
-                <div className="cobtn" onClick={goToCheckout}>
-                    <text>go to checkout</text>
-                </div>
+                <button className="cobtn" onClick={goToCheckout}>go to checkout</button>
             }
 
             {isCheckout&&
-                <div>
-                <h1 className="copayment">PAYMENT</h1>
+                <div className="copayment">
+                <h1 className="copaymenttitle">PAYMENT</h1>
                 <TextField error={checkInput[0]===false&&true} helperText={checkInput[0]===false&&"you fill the filed"}  onChange={(e)=>inputValidation(e,0)} className="cotf"  label="Full Name" margin="normal" variant="outlined" />
                 <TextField error={checkInput[1]===false&&true} helperText={checkInput[1]===false&&"you fill the filed"}  onChange={(e)=>inputValidation(e,1)} className="cotf" label="Email" margin="normal" variant="outlined" />
                 <TextField error={checkInput[2]===false&&true} helperText={checkInput[2]===false&&"you fill the filed"}  onChange={(e)=>inputValidation(e,2)} className="cotf" label="Phone" margin="normal" variant="outlined" />
@@ -238,9 +240,9 @@ function Checkout(props){
                     <Collapse in={finishOrderValidation.done}>
                         <Alert severity="success">the order sent successfully to the restaurant</Alert>
                     </Collapse>
-                    <div className="cobtn" onClick={finishOrder}>
-                        <text>checkout</text>
-                    </div>
+                    <button className="cobtn" onClick={finishOrder}>
+                        checkout
+                    </button>
                 </div>
                 
             }

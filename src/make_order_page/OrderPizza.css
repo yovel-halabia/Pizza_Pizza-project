@@ -77,16 +77,26 @@
     background-color: blue;
 }
 
+.opimg{
+    width:250px;
+    height:250px;
+}
+
 .opextras{
-    
     grid-column: 2;
     grid-row: 2;
     margin-right: 5px;
+    position: relative;
 }
 
 .opextras  text{
     font-size: 14px;
 
+}
+
+.opextrasabs{
+    position: absolute;
+    right: 1%;
 }
 
 .opdrag{
@@ -128,3 +138,150 @@
     grid-row: 5;
     grid-column: 1/3;
 }
+
+@media only screen and (min-width: 768px) {
+
+    .optitle h3{
+        font-size:32px;
+    }
+    .opimg{
+        width:350px;
+        height:350px;
+    }
+
+    .pizza-container{
+        width:340px;
+        height: 340px;
+    }
+
+    .pizza-container img{
+        width: 20px;
+        height:20px;
+        position: absolute;
+    }
+
+    .pizzaSlice1,.pizzaSlice2,.pizzaSlice3,.pizzaSlice4{
+        width:170px;
+        height:170px;
+    }
+
+    .pizzaSlice1{
+        border-top-right-radius: 250px;
+    }
+
+    .pizzaSlice2{
+        border-bottom-right-radius: 250px;
+    }
+
+    .pizzaSlice3{
+        border-bottom-left-radius: 250px;
+    }
+
+    .pizzaSlice4{
+        border-top-left-radius: 250px;
+    }
+
+    .opextras  text{
+        font-size: 16px;
+    
+    }
+
+    .opextrasabs{
+        right: 50%;
+    }
+
+    .opdrag{
+        height: 300px;
+        overflow-y: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .opdrag img{
+        width: 40px;
+        height: 40px;
+        
+    }
+
+    .opmanageextras text{
+        font-size:18px;
+    }
+
+}
+
+
+@media only screen and (min-width: 992px) {
+
+    .optitle h3{
+        font-size:36px;
+    }
+
+    .opimg{
+        width:500px;
+        height:500px;
+    }
+
+    .pizza-container{
+        width:490px;
+        height: 490px;
+    }
+
+    .pizza-container img{
+        width: 30px;
+        height:30px;
+        position: absolute;
+    }
+
+    .pizzaSlice1,.pizzaSlice2,.pizzaSlice3,.pizzaSlice4{
+        width:250px;
+        height:250px;
+    }
+
+    .pizzaSlice1{
+        border-top-right-radius: 400px;
+    }
+
+    .pizzaSlice2{
+        border-bottom-right-radius: 400px;
+    }
+
+    .pizzaSlice3{
+        border-bottom-left-radius: 400px;
+    }
+
+    .pizzaSlice4{
+        border-top-left-radius: 400px;
+    }
+
+    .opextras  text{
+        font-size: 18px;
+    
+    }
+
+    .opdrag{
+        height: 400px;
+        overflow-y: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .opdrag img{
+        width: 50px;
+        height: 50px;
+        
+    }
+
+    .opmanageextras text{
+        font-size:20px;
+    }
+
+}
+
+
+@media only screen and (min-width: 1500px) {
+    .opextrasabs{
+        right: 50%;
+    }
+
+}
+

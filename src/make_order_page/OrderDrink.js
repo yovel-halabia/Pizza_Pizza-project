@@ -59,9 +59,9 @@ function OrderDrink(props){
             </Collapse>
             </div>
             <h4>{choose.name}</h4>
-            <div className="mobtn" onClick={handleClick}>
-            <a>DONE</a>
-            </div>   
+            <button className="mobtn" onClick={handleClick}>
+            DONE
+            </button>   
             
         </div>  
     )

@@ -68,7 +68,7 @@ function MakeOrder(props){
 
     return(
         <div className="mo">
-            <a  className="moreturn" onClick={handleCancel}>back to menu <FontAwesomeIcon icon={faCaretDown} style={{ transform: "rotate(-90deg)"}}/></a>
+            <button  className="moreturn" onClick={handleCancel}>back to menu <FontAwesomeIcon icon={faCaretDown} style={{ transform: "rotate(-90deg)"}}/></button>
             <div className="mocontent">
                 {checkOrder()} 
             </div>

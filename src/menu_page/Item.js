@@ -9,6 +9,20 @@ function Item(props){
         height:props.item.height
     };
 
+    if(props.item.id === 0 && window.screen.width >=992){
+        styles={
+            width:props.item.width,
+            height:props.item.height,
+            margin:"45px 0"
+        }
+    }else if(props.item.id === 1 &&window.screen.width >=992){
+        styles={
+            width:props.item.width,
+            height:props.item.height,
+            margin:"35px 0"
+        }
+    }
+
 
     return(
         <div className="itcard">

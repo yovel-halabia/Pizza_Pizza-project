@@ -6,33 +6,57 @@ export default function ChooseBox(props){
     let imgqua ="";
     let imghalf = "";
     let halfStyle = {};
-    let quarterStyle={width:"37.5px",height:"37.5px",position:"absolute"};
+    let quarterStyle={};
     switch(props.extraPosition){
         case 'pizzaSlice1':
             imgqua="../images/menu_pic/pizza_sec/choose_box/quarter1.png";
             imghalf="../images/menu_pic/pizza_sec/choose_box/half2.png";
-            halfStyle = {float:'right'};
-            quarterStyle={...quarterStyle,right:"0",top:"0"};
+            if(window.innerWidth >=768 && window.innerHeight <=992){
+                halfStyle = {paddingLeft:"50px"};
+            }else if( window.innerHeight >=992){
+                halfStyle = {paddingLeft:"70px"};
+            }else{
+                halfStyle = {float:'right'};
+            }
+            quarterStyle={right:"0",top:"0"};
             break;
         case 'pizzaSlice2':
             imgqua="../images/menu_pic/pizza_sec/choose_box/quarter2.png";
             imghalf="../images/menu_pic/pizza_sec/choose_box/half2.png";
-            halfStyle = {float:'right'};
-            quarterStyle={...quarterStyle,right:"0",bottom:"0"};
+            if(window.innerWidth >=768 && window.innerHeight <=992){
+                halfStyle = {paddingLeft:"50px"};
+            }else if( window.innerHeight >=992){
+                halfStyle = {paddingLeft:"70px"};
+            }else{
+                halfStyle = {float:'right'};
+            }
+            quarterStyle={right:"0",bottom:"0"};
             
             break;
         case 'pizzaSlice3':
             imgqua="../images/menu_pic/pizza_sec/choose_box/quarter3.png";
             imghalf="../images/menu_pic/pizza_sec/choose_box/half1.png";
-            halfStyle = {float:'left'};
-            quarterStyle={...quarterStyle,left:"0",bottom:"0"};
+            if(window.innerWidth >=768 && window.innerHeight <=992){
+                halfStyle = {paddingRight:"50px"};
+            }else if( window.innerHeight >=992){
+                halfStyle = {paddingRight:"70px"};
+            }else{
+                halfStyle = {float:'left'};
+            }
+            quarterStyle={left:"0",bottom:"0"};
             
             break;
         case 'pizzaSlice4':
             imgqua="../images/menu_pic/pizza_sec/choose_box/quarter4.png";
             imghalf="../images/menu_pic/pizza_sec/choose_box/half1.png";
-            halfStyle = {float:'left'};
-            quarterStyle={...quarterStyle,left:"0",top:"0"};
+            if(window.innerWidth >=768 && window.innerHeight <=992){
+                halfStyle = {paddingRight:"50px"};
+            }else if( window.innerHeight >=992){
+                halfStyle = {paddingRight:"70px"};
+            }else{
+                halfStyle = {float:'left'};
+            }
+            quarterStyle={left:"0",top:"0"};
             break;
 
     }
@@ -59,15 +83,15 @@ export default function ChooseBox(props){
         <div className="cbcontent" >
             <div className="cbtitle"><text>choose</text></div>
             <div className="cbcard" onClick={()=>handleClick("quarter")}>
-                <div style={{width:"75px", height:"75px",position:"relative"}}>
-                    <img src={imgqua} style={quarterStyle}/>
+                <div id="cbqudiv" >
+                    <img id="cbqu" src={imgqua} style={quarterStyle}/>
                 </div>
                 
                 <text>quarter</text>
             </div>
             <div  className="cbcard" onClick={()=>handleClick("half")}>
                 <div style={halfStyle}>
-                    <img src={imghalf} style={{width:"37.5px",height:"75px"}} />
+                    <img src={imghalf} id="cbhalf" />
                 </div>
                 
                 <text>half</text>

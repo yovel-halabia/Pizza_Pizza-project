@@ -77,9 +77,9 @@ function OrderSalad(props){
             </ul>
         </div>
 
-        <div className="mobtn osbtn" onClick={()=>handleClick(props.item)}>
-            <a>DONE</a>
-        </div>
+        <button className="mobtn osbtn" onClick={()=>handleClick(props.item)}>
+            DONE
+        </button>
         
         </div>
     )       

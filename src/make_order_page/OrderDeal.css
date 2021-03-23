@@ -1,5 +1,5 @@
 .odprogressbar{
-    width: 90%;
+    width: 95%;
     height:30px;
     margin: 5px auto;
     border-radius:20px;
@@ -21,7 +21,7 @@
 
 
 .odsection text{
-  font-size:12px;
+  font-size:11px;
   font-weight: 700;
   color: black;
 }
@@ -56,7 +56,7 @@
 
   .odbox{
     position: absolute;
-    right: -3px;
+    right: -2px;
     top:50%;
     transform: translate(0%,-50%);
     width: 2px;
@@ -70,5 +70,30 @@
   .odboxwhite{
     background-color:white;
   }
+
+
+  @media only screen and (min-width: 768px) {
+    .odprogressbar{
+      width: 80%;
+    }
+    .odsection text{
+      font-size:14px;
+
+    }
+  
+  }
+
+  @media only screen and (min-width: 992px) {
+    .odprogressbar{
+      width: 70%;
+    }
+    .odsection text{
+      font-size:16px;
+
+    }
+  
+  }
+
+
 
   

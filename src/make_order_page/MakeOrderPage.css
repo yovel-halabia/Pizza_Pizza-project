@@ -24,14 +24,40 @@
 
 .moreturn{
     position: relative;
-    text-decoration: underline;
     color: black;
     font-size:14px;
     float:right;
     top:5px;
-    right:5px;
+    right:10px;
 }
 
 .moreturn:hover{
     color:black;
+}
+
+@media only screen and (min-width: 768px) {
+    .mobtn{
+       
+        width:60%;
+    }
+
+    .mobtn a{
+        font-size: 22px;
+    }
+
+    .moreturn{
+        font-size:16px;
+        top:10px;
+        right:15px;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .mobtn a{
+        font-size: 26px;
+    }
+
+    .moreturn{
+        font-size:18px;
+    }
 }
