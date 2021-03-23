@@ -8,7 +8,7 @@ import Collapse from '@material-ui/core/Collapse';
 import TextField from '@material-ui/core/TextField';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
-import DateFnsUtils from '@date-io/date-fns';
+import MomentUtils from '@date-io/moment';
 import SelectAddress from './SelectAddress';
 import OrderItem from './OrderItem';
 
@@ -122,20 +122,21 @@ function Checkout(props){
         if(!orderItems){
             setValidation({bool:true,content:"you must choose somting to order"});
             setTimeout(()=>setValidation({bool:false}), 3000);
-        }else if(orderItems){
+        }else{
             if(orderItems.length===0){
                 setValidation({bool:true,content:"you must choose somting to order"});
                 setTimeout(()=>setValidation({bool:false}), 3000);    
             }
-        }else if(selectClass.pickupClass === "hidden" && selectClass.deliveryClass === "hidden"){
-            setValidation({bool:true,content:"you dont choose your delivery option"});
-            setTimeout(()=>setValidation({bool:false}), 3000);
-        }else if(deliveryAddress.address === "select delivery address"&& selectClass.deliveryClass != "hidden"){
-            setValidation({bool:true,content:"you dont choose your delivery address"});
-            setTimeout(()=>setValidation({bool:false}), 3000);
-        }else{
-            props.onCheckout(true);
-            setIsCheckout(true);
+            else if(selectClass.pickupClass === "hidden" && selectClass.deliveryClass === "hidden"){
+                setValidation({bool:true,content:"you dont choose your delivery option"});
+                setTimeout(()=>setValidation({bool:false}), 3000);
+            }else if(deliveryAddress.address === "select delivery address"&& selectClass.deliveryClass != "hidden"){
+                setValidation({bool:true,content:"you dont choose your delivery address"});
+                setTimeout(()=>setValidation({bool:false}), 3000);
+            }else{
+                props.onCheckout(true);
+                setIsCheckout(true);
+            }
         }
     }
 
@@ -216,7 +217,7 @@ function Checkout(props){
                 <TextField error={checkInput[2]===false&&true} helperText={checkInput[2]===false&&"you fill the filed"}  onChange={(e)=>inputValidation(e,2)} className="cotf" label="Phone" margin="normal" variant="outlined" />
                 <TextField error={checkInput[3]===false&&true} helperText={checkInput[3]===false&&"you fill the filed"}  onChange={(e)=>inputValidation(e,3)} className="cotfcn"  label="Card Number"  margin="normal" variant="outlined" />
                 <TextField error={checkInput[4]===false&&true} helperText={checkInput[4]===false&&"you fill the filed"}  onChange={(e)=>inputValidation(e,4)} className="cotfcvv" label="CVV" margin="normal" variant="outlined" />
-                <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <MuiPickersUtilsProvider utils={MomentUtils}>
                   <DatePicker
                   className="cotf"
                   variant="outlined"

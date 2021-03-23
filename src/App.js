@@ -24,9 +24,6 @@ function App() {
 
   function getLocation(location){setLocation(location);}
 
-  window.addEventListener("beforeunload", function (e) {
-    window.localStorage.clear();
-  });
 
 
 
