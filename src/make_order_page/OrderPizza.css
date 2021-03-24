@@ -73,8 +73,8 @@
 .pizzaSlice2.lighting,
 .pizzaSlice3.lighting,
 .pizzaSlice4.lighting {
-    opacity: 50%;
     background-color: blue;
+    opacity: 50%;
 }
 
 .opimg{
