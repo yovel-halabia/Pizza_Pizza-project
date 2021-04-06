@@ -13,7 +13,6 @@ export default function OrderItem(props) {
         props.onEdit(props.index,props.item);
     }
 
-    // if is deal
     if(props.item.deal){
         return(
             <div className="oicard">

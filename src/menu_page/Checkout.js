@@ -215,7 +215,7 @@ function Checkout(props){
                 <TextField error={checkInput[0]===false&&true} helperText={checkInput[0]===false&&"you fill the filed"}  onChange={(e)=>inputValidation(e,0)} className="cotf"  label="Full Name" margin="normal" variant="outlined" />
                 <TextField error={checkInput[1]===false&&true} helperText={checkInput[1]===false&&"you fill the filed"}  onChange={(e)=>inputValidation(e,1)} className="cotf" label="Email" margin="normal" variant="outlined" />
                 <TextField error={checkInput[2]===false&&true} helperText={checkInput[2]===false&&"you fill the filed"}  onChange={(e)=>inputValidation(e,2)} className="cotf" label="Phone" margin="normal" variant="outlined" />
-                <TextField error={checkInput[3]===false&&true} helperText={checkInput[3]===false&&"you fill the filed"}  onChange={(e)=>inputValidation(e,3)} className="cotfcn"  label="Card Number"  margin="normal" variant="outlined" />
+                <TextField error={checkInput[3]===false&&true} helperText={checkInput[3]===false&&"you fill the filed"}  onChange={(e)=>inputValidation(e,3)} className="cotfcn"  label="Card Number (write random number)"  margin="normal" variant="outlined" />
                 <TextField error={checkInput[4]===false&&true} helperText={checkInput[4]===false&&"you fill the filed"}  onChange={(e)=>inputValidation(e,4)} className="cotfcvv" label="CVV" margin="normal" variant="outlined" />
                 <MuiPickersUtilsProvider utils={MomentUtils}>
                   <DatePicker

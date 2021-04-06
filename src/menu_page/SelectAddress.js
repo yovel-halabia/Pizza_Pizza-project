@@ -30,23 +30,6 @@ export default function SelectAddress(props) {
       }
       
     }
-
-   
-
-    function onCityClose(e,r){
-      if(r){
-
-        if((city === "אור יהודה") || (city === "קרית אונו") || (city === "יהוד")
-        ||(e.target.innerText === "אור יהודה")||(e.target.innerText === "קרית אונו")||(e.target.innerText === "יהוד")){
-          setDisable(false);
-        }else{
-          setValidation({bool:true,content:"your city is out of range"});
-          setTimeout(()=>setValidation({bool:false}), 3000);
-          setDisable(true);
-        }
-      }
-    } 
-
     
     function handleCityChange(e,value){
       setCity(value);
@@ -77,7 +60,6 @@ export default function SelectAddress(props) {
             onInputChange={handleCityChange}
             freeSolo
             options={arrayCity}
-            onClose={onCityClose}
             renderInput={(params) => (
             <TextField {...params}  label="city" margin="normal" variant="outlined" />
             )}
