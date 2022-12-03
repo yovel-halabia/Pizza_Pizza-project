@@ -1,30 +1,28 @@
-
-
-.nav-bar{
+.nav-bar {
     height: 140px;
-    width:100%;
+    width: 100%;
     padding: 10px 20px;
     margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
 }
 
-.logo{
+.logo {
     display: inline-block;
     width: 270px;
     height: 140px;
     background-size: cover;
     background-position: center center;
-    background-image: url(images/logo.png);
+    background-image: url(../images/logo.png);
 }
 
-.links{
+.links {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.links a{
+.links a {
     color: white;
     margin-right: 50px;
     font-weight: 700;
@@ -32,91 +30,104 @@
     text-decoration: none;
 }
 
-.phone a{
-    color:white;
+.phone a {
+    color: white;
     font-weight: 700;
     font-size: 24px;
     text-decoration: none;
     position: relative;
-    top:20px;
+    top: 20px;
 }
 
-.mbutton{
+.mbutton {
     display: none;
 }
 
 
 @media screen and (max-width: 1200px) {
-    .nav-bar{
+    .nav-bar {
         height: 120px;
     }
-    .logo{
+
+    .logo {
         width: 220px;
         height: 110px;
     }
-    .links a{
+
+    .links a {
         font-size: 24px;
     }
-    .phone a{
+
+    .phone a {
         font-size: 20px;
     }
 }
 
 @media screen and (max-width: 992px) {
-    .nav-bar{
+    .nav-bar {
         height: 110px;
     }
-    .logo{
+
+    .logo {
         width: 200px;
         height: 100px;
     }
-    .links a{
+
+    .links a {
         font-size: 22px;
     }
-    .phone a{
+
+    .phone a {
         font-size: 18px;
     }
-} 
+}
 
 @media screen and (max-width: 768px) {
-    .nav-bar{
+    .nav-bar {
         height: 95px;
     }
-    .logo{
+
+    .logo {
         width: 175px;
         height: 85px;
     }
-    .links a{
+
+    .links a {
         font-size: 20px;
     }
-    .phone a{
+
+    .phone a {
         font-size: 16px;
     }
-} 
+}
 
 @media screen and (max-width: 750px) {
-    .nav-bar{
+    .nav-bar {
         position: relative;
         height: 110px;
-        justify-content: center; 
+        justify-content: center;
     }
-    .links{
+
+    .links {
         display: none;
     }
-    .logo{
+
+    .logo {
         width: 200px;
         height: 100px;
     }
-    .phone{
+
+    .phone {
         position: absolute;
-        top:0;
-        left:10px;
+        top: 0;
+        left: 10px;
     }
-    .mbutton{
+
+    .mbutton {
         display: block;
         color: white;
         font-size: 42px;
         position: absolute;
-        right:10px;
+        right: 10px;
     }
-} 
+}
