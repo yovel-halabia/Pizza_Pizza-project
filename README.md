@@ -1,7 +1,7 @@
 # Amazon-clone E-commerce
 > This is my first project of frontend development
 
-> Live demo [_here_](https://amazon-clone-coral-mu.vercel.app/).
+> Live demo [_here_](https://pizza-pizza-project.vercel.app/).
 
 ## Table of Contents
 * [General Info](#general-information)
