@@ -1,0 +1,26 @@
+.address-fields{
+  width:100%;  
+}
+
+.address-fields button{
+  width: 100%;
+  padding: 10px 0;
+  margin: 10px 0;
+  background-color: #E41E26;
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;   
+}
+
+.address-fields__icon{
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.address-fields__fields{
+  display: flex;
+  flex-direction: column;
+}
+

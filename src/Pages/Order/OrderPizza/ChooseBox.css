@@ -1,0 +1,95 @@
+.choose-box {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    background: #ffff;
+    text-align: center;
+}
+
+.choose-box__title {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.choose-box__container {
+    display: flex;
+}
+
+.choose-box__choose {
+    cursor: pointer;
+    flex: 1;
+    padding: 10px;
+}
+
+.choose-box__choose div{
+    margin-bottom: 5px;
+}
+
+.choose-box__circle-container {
+    position: relative;
+    width: 60%;
+    aspect-ratio: 1/1;
+    margin: auto;
+
+}
+
+.choose-box__circle {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    box-sizing: border-box;
+    background-color: black;
+}
+
+.choose-box__half-circle {
+    width: 50%;
+}
+
+.choose-box__right-circle {
+    border-radius: 0 200px 200px 0;
+    margin-left: auto;
+}
+
+
+.choose-box__left-circle {
+    border-radius: 200px 0 0 200px;
+    margin-right: auto;
+}
+
+.choose-box__quarter {
+    width: 50%;
+    height: 50%;
+    position: absolute;
+}
+
+.choose-box__left-top-quarter {
+    top: 0;
+    left: 0;
+    border-radius: 100% 0 0 0;
+}
+
+.choose-box__right-top-quarter {
+    top: 0;
+    right: 0;
+    border-radius: 0 100% 0 0;
+}
+
+.choose-box__left-bottom-quarter {
+    bottom: 0;
+    left: 0;
+    border-radius: 0 0 0 100%;
+}
+
+.choose-box__right-bottom-quarter {
+    bottom: 0;
+    right: 0;
+    border-radius: 0 0 100% 0;
+}
+
+
+.choose-box__cancel {
+    padding: 5px;
+}

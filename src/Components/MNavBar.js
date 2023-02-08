@@ -1,32 +1,32 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import './MNavBar.css';
+import "./MNavBar.css";
+import {Link, useLocation} from "react-router-dom";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faTimes} from "@fortawesome/free-solid-svg-icons";
 
+export default function MNavBar({closeNav}) {
+	const location = useLocation();
 
+	return (
+		<div className="mobile-nav-bar">
+			<div className="mobile-nav-bar__close">
+				<FontAwesomeIcon onClick={closeNav} icon={faTimes} size="3x" />
+			</div>
 
+			<div className="mobile-nav-bar__links">
+				<Link className={location.pathname === "/menu" && "mobile-nav-bar__link-selected"} to="menu" onClick={closeNav}>
+					menu
+				</Link>
 
-function MNavBar(props){
+				<Link className={location.pathname === "/about-us" && "mobile-nav-bar__link-selected"} to="about-us" onClick={closeNav}>
+					about us
+				</Link>
 
-
-    return(
-        <div className={props.navClick?"mnav-bar":"hidden"}> 
-            <FontAwesomeIcon onClick={()=>{props.setFalse()}} className="itimes" icon={faTimes}/>
-            <div className="mlinks">
-                <div>
-                    <a className={props.getLocation === "menu" ?"acolor":"ma"} href="/menu">menu </a>
-                </div>
-                <div>
-                    <a className={props.getLocation === "about_us" ?"acolor":"ma"} href="/about-us">about us</a>
-                </div>
-                <div>
-                    <a className={props.getLocation === "contact_us" ?"acolor":"ma"} href="/contact-us">contact us</a>
-                </div>
-            </div>
-
-
-        </div>
-    )
+				<Link className={location.pathname === "/contact-us" && "mobile-nav-bar__link-selected"} to="contact-us" onClick={closeNav}>
+					contact us
+				</Link>
+			</div>
+		</div>
+	);
 }
 
-export default MNavBar;

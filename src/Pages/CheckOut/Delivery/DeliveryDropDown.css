@@ -1,0 +1,25 @@
+.delivery-drop-down {
+    width: 100%;
+    margin: 0 auto;
+    padding: 15px 0;
+    border: 1px solid #DBDDE0;
+}
+
+.delivery-drop-down__button{
+    width: 100%;
+    display: flex;
+    gap:5px;
+    justify-content: center;
+    align-items: center;
+}
+
+.delivery-drop-down__items {
+    width: 100%;
+    text-align: center;
+    border: 0;
+    will-change: transform !important;
+    position: absolute !important;
+    transform: translate3d(0px, 35px, 0px) !important;
+    top: 0px !important;
+    left: 0px !important;
+}

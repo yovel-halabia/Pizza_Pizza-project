@@ -1,0 +1,25 @@
+.order {
+    position: relative;
+    padding: 0 20px;
+    width: 80%;
+    height: 80%;
+    margin: 0 auto;
+    background-color: white;
+    opacity: 0.9;
+    overflow-y: auto;
+}
+
+.order__link-return{
+    font-size: 20px;
+    color: black;
+    display: block;
+    text-align: right;
+    margin: 10px 0;
+}
+
+.order__button{
+    width: 70%;
+    display: block;
+    padding: 10px 0;
+    margin: 15px auto;
+}

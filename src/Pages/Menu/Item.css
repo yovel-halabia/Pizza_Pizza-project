@@ -1,26 +1,40 @@
 
-.itcard{
-    width:80%;
-    margin: 0 auto;
-    margin-bottom: 20px;
+.item{
+    width: 100%;
+    max-width: 280px;
     box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.4);
-
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
 }
 
 
-.itcard img{
-    margin: 20px 0;
+.item___img-container{
+position: relative;
+padding-top:100%;
 }
 
-.itcard h5{
+.item___img-container img{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    width: auto;
+    max-width: 100%;
+    max-height: 100%;
+    transform: translate(-50%, -50%);
+}
+
+.item h5{
     font-weight: 700;
 }
 
-.itcard p{
+.item p{
     font-weight: 700;
     font-size: 24px;
+    margin-top: auto;
 }
-.itcard button{
+.item button{
     width:100%;
     padding: 10px 0;
     background-color: #E41E26;
@@ -31,6 +45,6 @@
     border: none;
 }
 
-.itcard button:focus {
+.item button:focus {
     outline:0;
 }

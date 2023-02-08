@@ -1,0 +1,21 @@
+.choose-salad h3{
+text-align: center;
+}
+
+.choose-salad__card{
+    width:80%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    cursor: pointer;
+}
+
+.choose-salad__card img{
+    width: 50%;
+}
+
+.choose-salad__card h5{
+    font-weight: 700;
+}

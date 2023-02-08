@@ -1,6 +1,6 @@
 
 
-.shape {
+.home__shape {
     height: 200px;
     width: 100%;
     padding: 0 5%;
@@ -14,7 +14,7 @@
     align-items: center;
 }
 
-.shape a{
+.home__shape a {
     background-color: white;
     padding: 20px 30px;
     color: black;
@@ -23,38 +23,19 @@
     text-decoration: none;
 }
 
-.shape text{ 
+.home__shape span {
     color: white;
     font-weight: 700;
     font-size: 64px;
     line-height: 1.2;
 }
 
-.mbuton{
-    display: none;
-}
-.mbuton:hover{
-    color: white;
+
+.home__mobile-link {
+    display: inline;
     text-decoration: none;
-}
-@media screen and (max-width: 750px) {
-
-    .shape{
-        display: none;
-    }
-
-    .mbuton{
-        display: inline;
-        background-color: #F26522;
-        color: white;
-        padding: 20px 30px;
-        font-size: 30px;
-        font-weight: 700;
-        text-decoration: none;
         position: absolute;
-        bottom:0;
+        bottom: 0;
         left: 50%;
         transform: translate(-50%, -50%);
-    }
-    
 }

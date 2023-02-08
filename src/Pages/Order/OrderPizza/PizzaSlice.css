@@ -1,0 +1,42 @@
+.pizza-slice {
+    position: relative;
+}
+
+.pizza-slice>div {
+    width: 100%;
+    height: 100%;
+}
+
+.pizza-slice .lighting {
+    background-color: blue;
+    opacity: 0.5;
+}
+
+.pizza-slice .lighting>* {
+    display: none !important;
+}
+
+.pizza-slice .pizza-slice__extras {
+    top: 0;
+    position: absolute;
+}
+
+.pizza-slice .pizza-slice__extras img {
+    position: absolute;
+    max-width: 30px;
+}
+
+
+@media screen and (max-width: 1200px) {
+    .pizza-slice .pizza-slice__extras img {
+        max-width: 20px;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .pizza-slice .pizza-slice__extras img {
+        max-width: 15px;
+    }
+}
+

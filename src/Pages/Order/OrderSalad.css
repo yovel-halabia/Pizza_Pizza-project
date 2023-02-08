@@ -1,0 +1,40 @@
+.order-salad h3{
+    text-align: center;
+}
+
+.order-salad__container{
+    display: flex;
+}
+
+.order-salad__img-container{
+    flex:1;
+}
+
+.order-salad__img-container img{
+    width: 100%;
+    height: 100%;
+}
+
+
+.order-salad__checkboxs{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+    font-size: 20px;
+}
+
+.order-salad__checkboxs li{
+    list-style-type: none;
+}
+
+.order-salad__checkboxs input{
+    margin-right: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    .order-salad__container{
+        flex-direction: column;
+    }
+}
+

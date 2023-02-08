@@ -1,99 +1,45 @@
-import React from "react";
+import {useState, useRef} from "react";
 import "./Menu.css";
-import {useHistory} from "react-router-dom";
 
 import {items} from "../../data";
 
 import Dropdown from "./Dropdown";
 import Item from "./Item";
-import Checkout from "./Checkout";
+import Cart from "../../Components/Cart/Cart";
+import useGetDropDownName from "./useGetDropDownName";
 
-function MenuPage(props) {
-	//send the location to mnavbar
-	props.getLocation("menu");
-
-	const localStorage = window.localStorage;
-	const [orderItems, setOrderItems] = React.useState(JSON.parse(localStorage.getItem("orderItems")));
-	const [isCheckout, setIsCheckout] = React.useState(false);
-	const [scrollPosition, setScrollPosition] = React.useState(0);
-
-	const history = useHistory();
-
-	let height;
-	if (isCheckout) {
-		height = {height: "100%"};
-	} else {
-		height = {height: "91%"};
-	}
-
-	//create new Item
-	function createItem(item) {
-		return <Item key={item.id} id={item.id} item={item} handleClick={handleClick} />;
-	}
-
-	//if order now button is clicked
-	function handleClick(item) {
-		if (item.type === "drink" || item.type === "dessert") {
-			if (JSON.parse(localStorage.getItem("orderItems"))) {
-				localStorage.setItem("orderItems", JSON.stringify([...JSON.parse(localStorage.getItem("orderItems")), item]));
-			} else {
-				localStorage.setItem("orderItems", JSON.stringify([item]));
-			}
-
-			setOrderItems(JSON.parse(localStorage.getItem("orderItems")));
-			window.location.replace("/menu#checkout");
-		} else {
-			localStorage.setItem("item", JSON.stringify(item));
-			history.push("/make-order");
-		}
-	}
-
-	function onCheckout(bool) {
-		setIsCheckout(bool);
-	}
-
-	function onScroll() {
-		setScrollPosition(document.getElementById("scroll").scrollTop);
-	}
+export default function MenuPage() {
+	const [scrollPosition, setScrollPosition] = useState(0);
+	const menuRef = useRef(null);
+	const itemsRef = useRef([]);
+	const dropName = useGetDropDownName({menuRef, itemsRef, scrollPosition});
 
 	return (
-		<div className="mecontent">
-			{!isCheckout && <Dropdown scrollPosition={scrollPosition} />}
+		<div className="menu page" ref={menuRef} onScroll={(e) => setScrollPosition(e.target.scrollTop)}>
+			<Dropdown dropName={dropName} />
 
-			<div className="mescroll" style={height} id="scroll" onScroll={onScroll}>
-				{!isCheckout && (
-					<div>
-						<div className="mesection" id="pizza">
-							<text>PIZZA</text>
+			<div className="menu__content">
+				{["pizza", "deal", "salad", "dessert", "drink", "cart"].map((category, index) => (
+					<>
+						<div className="menu__category" key={index} ref={(el) => (itemsRef.current[index] = el)} id={`${category}`}>
+							<span>{category.toUpperCase()}</span>
 						</div>
-						<div className="megrid">{items.filter((item) => item.type.includes("pizza")).map(createItem)}</div>
-
-						<div className="mesection" id="deals">
-							<text>DEALS</text>
-						</div>
-						<div className="megrid">{items.filter((item) => item.type.includes("deal")).map(createItem)}</div>
-
-						<div className="mesection" id="salad">
-							<text>SALAD</text>
-						</div>
-						<div className="megrid">{items.filter((item) => item.type.includes("salad")).map(createItem)}</div>
-
-						<div className="mesection" id="desserts">
-							<text>DESSERTS</text>
-						</div>
-						<div className="megrid">{items.filter((item) => item.type.includes("dessert")).map(createItem)}</div>
-
-						<div className="mesection" id="beverages">
-							<text>BEVERAGES</text>
-						</div>
-						<div className="megrid">{items.filter((item) => item.type.includes("drink")).map(createItem)}</div>
-					</div>
-				)}
-
-				<Checkout id="checkout" orderItems={orderItems} onCheckout={onCheckout} />
+						{category !== "cart" ? (
+							<div className="menu__category-items">
+								{items
+									.filter((item) => item.type.includes(category))
+									.map((item, i) => (
+										<Item key={i} item={item} />
+									))}
+							</div>
+						) : (
+							<div className="menu__category-items">
+								<Cart />
+							</div>
+						)}
+					</>
+				))}
 			</div>
 		</div>
 	);
 }
-
-export default MenuPage;

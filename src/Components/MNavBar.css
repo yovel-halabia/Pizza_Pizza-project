@@ -1,6 +1,4 @@
-
-
-.mnav-bar{
+.mobile-nav-bar{
     width: 100%;
     height: 100vh;
     position: absolute;
@@ -8,55 +6,53 @@
     right: 0;
     background-color: white;
     opacity: 0.95;
-    animation-name: an1;
+    animation-name: mobile-nav-animation;
     animation-duration: 1s;
+    z-index: 1;
+}
+
+.mobile-nav-bar__close{
+    display: flex;
+    align-items:flex-end;
+    justify-content: flex-end;
+    height: 95px;
+    padding: 0 25px;
+    animation: an2 3s;
 }
 
 
-
-.itimes{
-    font-size: 42px;
-    float: right;
-    margin-top:5%;
-    margin-right: 5%;
-    animation-name: an2;
-    animation-duration: 6s;
-}
-
-@keyframes an1 {
+@keyframes mobile-nav-animation {
     from {width: 0%;}
     to {width: 100%;}
 }
 
-.mlinks{
+.mobile-nav-bar__links{
     position: absolute;
     top:40%;
     left: 50%;
     transform: translate(-50%, -50%);
-    text-align:center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     animation-name: an2;
-    animation-duration: 6s;
+    animation-duration: 3s;
 }
 @keyframes an2 {
     from {opacity: 0;}
     to {opacity: 1;}
 }
 
-.mlinks div{
+.mobile-nav-bar__links a {
+    white-space: nowrap;
     margin-bottom: 20px;
-}
-
-
-.ma, .ma:hover {
     color: #212529;
     font-weight: 700;
     font-size: 40px;
     text-decoration: none;  
 }
 
-.acolor, .acolor:hover{
+
+a.mobile-nav-bar__link-selected{
     color: #F26522;
-    font-weight: 700;
-    font-size: 40px;
-    text-decoration: none;
 }

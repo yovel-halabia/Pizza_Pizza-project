@@ -1,25 +1,30 @@
 
-
-.cucontent{
-    width: 80%;
-    margin: 0 auto;
-    text-align: center;
-    background-color: white;
-    opacity: 0.9;
-}
-
-.cucontent .row{
+.contact-us .row {
     margin: 20px 0;
 }
 
-.cucontent h1{
+.contact-us h1 {
     color: #F26522;
     font-weight: 700;
-    margin: 0 auto;
+    text-align: center;
     padding-top: 10px;
 }
 
-.cucontent input, .cucontent textarea{
+.contact-us__row{
+    display: flex;
+    justify-content: center;
+}
+.contact-us_form{
+    flex-direction: column;
+}
+
+.contact-us form{
+    width: 100%;
+    padding-bottom: 20px;
+}
+
+.contact-us input,
+.contact-us textarea {
     display: block;
     width: 80%;
     font-size: 14px;
@@ -28,75 +33,53 @@
     padding: 5px;
 }
 
-.cucontent .culine{
-    width:80%;
-    height: 1px;
-    background-color: black;
-    margin: 10px auto;
-}
-
-.cucontent button{
+.contact-us button {
+    display: block;
     background-color: #F26522;
     color: white;
     border: 0;
     padding: 5px 40px;
-    margin-bottom: 10px;
+    margin: auto;
     font-size: 28px;
     font-weight: 700;
 }
 
-.cucontacts{
-    display:inline-block;
-    margin-bottom: 10px;
-    font-weight: 700;
-    text-align: left;   
+.contact-us__line {
+    width:1px;
+    height: 90%;
+    background-color: black;
+
 }
 
-.cucontacts a, .cucontacts a:hover{
+.contact-us__links {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    gap:5px;
+    font-size:18px;
+}
+
+.contact-us__links a {
     text-decoration: none;
     color: black;
 }
 
 
-.cucontacts text{
-    margin-left: 5px;
+.contact-us__links span {
+    margin-left: 10px;
 }
 
 
-@media screen and (min-width: 768px) {
-    .cucontent .culine{
-        width:1px;
-        height: 80%;
-        
+@media screen and (max-width: 768px) {
+    .contact-us__line {
+        width:90%;
+        height: 1px;
+        align-self: center;  
     }
 
-    .cucontacts{ 
-        width: 100%;
-        font-size:18px;
-        position: absolute;
-        top:40%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+    .contact-us__links {
+        margin-top:0;
+        padding: 15px 0;
+        align-items: center;
     }
-
-    .cucontent button{
-        margin-bottom: 20px;
-    }
-
-}
-
-@media screen and (min-width: 1200px) {
-
-    .cucontacts{ 
-        font-size:24px;
-    }
-
-    .cucontent input, .cucontent textarea{
-        font-size: 18px;
-    }
-
-    .cucontent button{
-        font-size: 42px;
-    }
-
 }

@@ -1,0 +1,26 @@
+.deal-progress-bar {
+    width: 95%;
+    height: 30px;
+    position: relative;
+    margin: 5px auto;
+    border-radius: 20px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+}
+
+.deal-progress-bar__progress {
+    z-index: -1;
+    position: absolute;
+    height: 100%;
+    left: 0;
+    background-color: green;
+    transition: width 0.5s;
+}
+
+.deal-progress-bar>div {
+    flex: 1;
+    text-align: center;
+}

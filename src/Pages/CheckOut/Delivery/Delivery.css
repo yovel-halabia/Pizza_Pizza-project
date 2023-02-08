@@ -1,0 +1,7 @@
+.delivery__pickup{
+    display: block;
+    font-size: 16px;
+    text-decoration: underline;
+    text-align: center;
+    margin-top: 10px;
+}

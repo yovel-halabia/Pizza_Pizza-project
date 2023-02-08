@@ -1,30 +1,33 @@
 import React from "react";
 import "./Home.css";
+import {Link} from "react-router-dom";
+import useIsMobile from "../../Hooks/useIsMobile";
 
-function HomePage(props) {
-	props.getLocation("home");
+export default function HomePage() {
+	const isMobile = useIsMobile();
 
 	return (
-		<div>
-			<div className="shape">
-				<div>
-					<text>
-						“in the love
-						<br />
-						of pizza”
-					</text>
-				</div>
+		<div className="home">
+			{!isMobile ? (
+				<div className="home__shape">
+					<div>
+						<span>
+							“in the love
+							<br />
+							of pizza”
+						</span>
+					</div>
 
-				<div>
-					<a href="/menu">order now</a>
+					<div>
+						<Link to="menu">order now</Link>
+					</div>
 				</div>
-			</div>
-
-			<a className="mbuton" href="/menu">
-				order now
-			</a>
+			) : (
+				<Link className="home__mobile-link link" to="menu">
+					order now
+				</Link>
+			)}
 		</div>
 	);
 }
 
-export default HomePage;
