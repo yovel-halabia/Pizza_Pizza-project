@@ -1,10 +1,10 @@
 # Pizza Pizza Project
 
-> Live demo [_here_](https://pizza-pizza-project.vercel.app/).
+Live demo [_here_](https://pizza-pizza-project.vercel.app/).
 
 ## General Information
 - This project is demo pizza website, you can order and make a purchase.
-- In the website you can get experience of full customer journey from choose your pizza with adds make a full purchase.
+- In the website you can get experience of full customer journey from choose your pizza with adds and make a full purchase.
 - The goal of the project is to create experience in building a front-end website.
 
 
