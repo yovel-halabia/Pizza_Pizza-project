@@ -9,7 +9,7 @@ Live demo [_here_](https://pizza-pizza-project.vercel.app/).
 
 
 ## Technologies Used
-![Skills](https://skills.thijs.gg/icons?i=nodejs,react&perline=3)
+![Skills](https://skillicons.dev/icons?i=js,html,css,react,nodejs)
 
 ## Features
 - Add to cart
